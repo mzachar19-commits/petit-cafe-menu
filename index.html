@@ -183,17 +183,18 @@ h2{
  margin-bottom:2px;
  border-bottom:1px solid var(--line);
  font-size:11px;
- letter-spacing:.14em;
+ letter-spacing:.12em;
  text-transform:uppercase;
  font-weight:800;
- color:var(--muted);
 }
 
-.cg-prod{text-align:left}
-.cg-slot{
- min-height:1px;
- border-bottom:1px solid rgba(200,166,106,.22);
- opacity:.85;
+.cg-blank{min-height:1.1em}
+
+.cg-mhead,.cg-dhead{
+ text-align:right;
+ color:var(--gold);
+ padding-bottom:6px;
+ border-bottom:1px solid rgba(200,166,106,.28);
 }
 
 .row-coffee{
@@ -234,14 +235,6 @@ h2{
 .p-m.empty,.p-d.empty{
  color:rgba(246,234,216,.35);
  font-weight:700;
-}
-
-.row-coffee.row-single .p-span{
- grid-column:2 / span 2;
- text-align:center;
- color:var(--gold);
- font-weight:900;
- font-variant-numeric:tabular-nums;
 }
 
 .row-simple .name{
@@ -374,29 +367,29 @@ footer{
 <div class="card reveal card-menu">
 <div class="coffee-grid">
 <div class="cg-head">
-<span class="cg-prod">Προϊόν</span>
-<span class="cg-slot" aria-hidden="true"></span>
-<span class="cg-slot" aria-hidden="true"></span>
+<span class="cg-blank" aria-hidden="true"></span>
+<span class="cg-mhead">ΜΟΝΟΣ</span>
+<span class="cg-dhead">ΔΙΠΛΟΣ</span>
 </div>
-<div class="row-coffee"><span class="name">Εσπρέσσο</span><span class="p-m">2,8€</span><span class="p-d">3,5€</span></div>
-<div class="row-coffee row-single"><span class="name">Αμερικάνο</span><span class="p-span">3,7€</span></div>
-<div class="row-coffee"><span class="name">Εσπρέσσο Μακιάτο</span><span class="p-m">3,1€</span><span class="p-d">4,1€</span></div>
-<div class="row-coffee row-single"><span class="name">Εσπρέσσο φρέντο</span><span class="p-span">3,5€</span></div>
-<div class="row-coffee row-single"><span class="name">Καπουτσίνο φρέντο</span><span class="p-span">3,8€</span></div>
-<div class="row-coffee row-single"><span class="name">Καπουτσίνο φρέντο με γεύσεις<span class="star">*</span></span><span class="p-span">4,6€</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο</span><span class="p-m">3,8€</span><span class="p-d">4,3€</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο Βιενουά</span><span class="p-m">4,6€</span><span class="p-d">5,1€</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο διάφορες γεύσεις<span class="star">*</span></span><span class="p-m">4,6€</span><span class="p-d">5,1€</span></div>
-<div class="row-coffee row-single"><span class="name">Λάττε</span><span class="p-span">4,3€</span></div>
-<div class="row-coffee row-single"><span class="name">Νες / Nes Cafe</span><span class="p-span">4,5€</span></div>
-<div class="row-coffee row-single"><span class="name">Φραπέ</span><span class="p-span">4,5€</span></div>
-<div class="row-coffee row-single"><span class="name">Φραπέ με Baileys</span><span class="p-span">7,5€</span></div>
-<div class="row-coffee row-single"><span class="name">Γαλλικός καφές</span><span class="p-span">3,8€</span></div>
-<div class="row-coffee row-single"><span class="name">Ιρλανδικός καφές</span><span class="p-span">7,0€</span></div>
-<div class="row-coffee"><span class="name">Ελληνικός</span><span class="p-m">3,1€</span><span class="p-d">3,8€</span></div>
-<div class="row-coffee row-single"><span class="name">Ζεστή σοκολάτα<span class="star">*</span></span><span class="p-span">4,0€</span></div>
-<div class="row-coffee row-single"><span class="name">Κρύα σοκολάτα<span class="star">*</span></span><span class="p-span">4,5€</span></div>
-<div class="row-coffee row-single"><span class="name">Σοκολάτα Βιενουά</span><span class="p-span">4,5€</span></div>
+<div class="row-coffee"><span class="name">Εσπρέσσο</span><span class="p-m">2,80€</span><span class="p-d">3,50€</span></div>
+<div class="row-coffee"><span class="name">Αμερικάνο</span><span class="p-m">3,70€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Εσπρέσσο Μακιάτο</span><span class="p-m">3,10€</span><span class="p-d">4,10€</span></div>
+<div class="row-coffee"><span class="name">Εσπρέσσο φρέντο</span><span class="p-m">3,50€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Καπουτσίνο φρέντο</span><span class="p-m">3,80€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Καπουτσίνο φρέντο με γεύσεις<span class="star">*</span></span><span class="p-m">4,60€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Καπουτσίνο</span><span class="p-m">3,80€</span><span class="p-d">4,30€</span></div>
+<div class="row-coffee"><span class="name">Καπουτσίνο Βιενουά</span><span class="p-m">4,60€</span><span class="p-d">5,10€</span></div>
+<div class="row-coffee"><span class="name">Καπουτσίνο διάφορες γεύσεις<span class="star">*</span></span><span class="p-m">4,60€</span><span class="p-d">5,10€</span></div>
+<div class="row-coffee"><span class="name">Λάττε</span><span class="p-m">4,30€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Νες / Nes Cafe</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Φραπέ</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Φραπέ με Baileys</span><span class="p-m">7,50€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Γαλλικός καφές</span><span class="p-m">3,80€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Ιρλανδικός καφές</span><span class="p-m">7,00€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Ελληνικός</span><span class="p-m">3,10€</span><span class="p-d">3,80€</span></div>
+<div class="row-coffee"><span class="name">Ζεστή σοκολάτα<span class="star">*</span></span><span class="p-m">4,00€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Κρύα σοκολάτα<span class="star">*</span></span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Σοκολάτα Βιενουά</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
 </div>
 </div>
 <div class="note reveal">*Γεύσεις: Καραμέλα, Φράουλα, Φουντούκι, Βανίλια, Πραλίνα</div>
@@ -405,40 +398,40 @@ footer{
 <section id="juices">
 <h2 class="reveal">ΧΥΜΟΙ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Φυσικός χυμός πορτοκάλι 330ml</span><span class="price">4€</span></div>
-<div class="row-simple"><span class="name">Ανάμεικτος φυσικός χυμός 330ml</span><span class="price">4,5€</span></div>
-<div class="row-simple"><span class="name">Χυμός 330ml</span><span class="price">3,6€</span></div>
+<div class="row-simple"><span class="name">Φυσικός χυμός πορτοκάλι 330ml</span><span class="price">4,00€</span></div>
+<div class="row-simple"><span class="name">Ανάμεικτος φυσικός χυμός 330ml</span><span class="price">4,50€</span></div>
+<div class="row-simple"><span class="name">Χυμός 330ml</span><span class="price">3,60€</span></div>
 </div>
 </section>
 
 <section id="tea">
 <h2 class="reveal">ΤΣΑΙ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Τσάι (ρωτήστε μας)</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Χαμομήλι</span><span class="price">4€</span></div>
+<div class="row-simple"><span class="name">Τσάι (ρωτήστε μας)</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Χαμομήλι</span><span class="price">4,00€</span></div>
 </div>
 </section>
 
 <section id="homemade">
 <h2 class="reveal">ΣΠΙΤΙΚΑ ΡΟΦΗΜΑΤΑ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Σπιτική λεμονάδα με τζίντζερ 500ml</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Σπιτική λεμονάδα με μαστίχα Χίου &amp; λάιμ 500ml</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Σπιτική βυσσινάδα 500ml</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Σπιτική μανταρινάδα 500ml</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Holy Ginger κρύο ή ζεστό 500ml<span class="desc">Ρόφημα με μέλι ανθέων, φρεσκοστυμμένο χυμό τζίντζερ και λεμόνι. Δροσιστική και πικάντικη γεύση, χωρίς ζάχαρη και συντηρητικά.</span></span><span class="price">6,5€</span></div>
+<div class="row-simple"><span class="name">Σπιτική λεμονάδα με τζίντζερ 500ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Σπιτική λεμονάδα με μαστίχα Χίου &amp; λάιμ 500ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Σπιτική βυσσινάδα 500ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Σπιτική μανταρινάδα 500ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Holy Ginger κρύο ή ζεστό 500ml<span class="desc">Ρόφημα με μέλι ανθέων, φρεσκοστυμμένο χυμό τζίντζερ και λεμόνι. Δροσιστική και πικάντικη γεύση, χωρίς ζάχαρη και συντηρητικά.</span></span><span class="price">6,50€</span></div>
 </div>
 </section>
 
 <section id="soft">
 <h2 class="reveal">ΑΝΘΡΑΚΟΥΧΑ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Πορτοκαλάδα με ανθρακικό 250ml</span><span class="price">3,6€</span></div>
-<div class="row-simple"><span class="name">Coca Cola / Zero 250ml</span><span class="price">3,6€</span></div>
-<div class="row-simple"><span class="name">Pink Grapefruit Soda OZ 330ml</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Yuzu - Cucumber Soda OZ 330ml</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Pelegrino / Ξυνό Νερό 360ml</span><span class="price">3,6€</span></div>
-<div class="row-simple"><span class="name">Νερό</span><span class="price">0,8€</span></div>
+<div class="row-simple"><span class="name">Πορτοκαλάδα με ανθρακικό 250ml</span><span class="price">3,60€</span></div>
+<div class="row-simple"><span class="name">Coca Cola / Zero 250ml</span><span class="price">3,60€</span></div>
+<div class="row-simple"><span class="name">Pink Grapefruit Soda OZ 330ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Yuzu - Cucumber Soda OZ 330ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Pelegrino / Ξυνό Νερό 360ml</span><span class="price">3,60€</span></div>
+<div class="row-simple"><span class="name">Νερό</span><span class="price">0,80€</span></div>
 </div>
 </section>
 
@@ -446,42 +439,42 @@ footer{
 <h2 class="reveal">SNACKS</h2>
 <div class="card reveal card-menu">
 <p class="menu-intro menu-note">*Σημείωση: Τα ψωμάκια είναι κατεψυγμένα.</p>
-<div class="row-simple"><span class="name">Σολομού</span><span class="price">6,5€</span></div>
-<div class="row-simple"><span class="name">Παστράμι</span><span class="price">6,5€</span></div>
-<div class="row-simple"><span class="name">Ζαμπόν Πράγας</span><span class="price">6€</span></div>
-<div class="row-simple"><span class="name">Μορταδέλα</span><span class="price">5,5€</span></div>
-<div class="row-simple"><span class="name">Προσούτο</span><span class="price">5,5€</span></div>
-<div class="row-simple"><span class="name">Σαλάμι</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Τοστ γαλοπούλα - τυρί</span><span class="price">4€</span></div>
-<div class="row-simple"><span class="name">Τοστ ζαμπόν - τυρί</span><span class="price">4€</span></div>
-<div class="row-simple"><span class="name">Μίνι μπριός</span><span class="price">2,5€</span></div>
+<div class="row-simple"><span class="name">Σολομού</span><span class="price">6,50€</span></div>
+<div class="row-simple"><span class="name">Παστράμι</span><span class="price">6,50€</span></div>
+<div class="row-simple"><span class="name">Ζαμπόν Πράγας</span><span class="price">6,00€</span></div>
+<div class="row-simple"><span class="name">Μορταδέλα</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Προσούτο</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Σαλάμι</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Τοστ γαλοπούλα - τυρί</span><span class="price">4,00€</span></div>
+<div class="row-simple"><span class="name">Τοστ ζαμπόν - τυρί</span><span class="price">4,00€</span></div>
+<div class="row-simple"><span class="name">Μίνι μπριός</span><span class="price">2,50€</span></div>
 </div>
 </section>
 
 <section id="club">
 <h2 class="reveal">CLUB SANDWICHES</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Club sandwich Salmon</span><span class="price">10€</span></div>
-<div class="row-simple"><span class="name">Club sandwich pastrami</span><span class="price">8,5€</span></div>
-<div class="row-simple"><span class="name">Club sandwich γαλοπούλα</span><span class="price">7,5€</span></div>
-<div class="row-simple"><span class="name">Club sandwich ζαμπόν</span><span class="price">7,5€</span></div>
+<div class="row-simple"><span class="name">Club sandwich Salmon</span><span class="price">10,00€</span></div>
+<div class="row-simple"><span class="name">Club sandwich pastrami</span><span class="price">8,50€</span></div>
+<div class="row-simple"><span class="name">Club sandwich γαλοπούλα</span><span class="price">7,50€</span></div>
+<div class="row-simple"><span class="name">Club sandwich ζαμπόν</span><span class="price">7,50€</span></div>
 </div>
 </section>
 
 <section id="salads">
 <h2 class="reveal">ΣΑΛΑΤΕΣ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Σολομού</span><span class="price">10€</span></div>
-<div class="row-simple"><span class="name">Caesar’s</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Προσούτο</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Caprese</span><span class="price">7,5€</span></div>
+<div class="row-simple"><span class="name">Σολομού</span><span class="price">10,00€</span></div>
+<div class="row-simple"><span class="name">Caesar’s</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Προσούτο</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Caprese</span><span class="price">7,50€</span></div>
 </div>
 </section>
 
 <section id="pizza">
 <h2 class="reveal">ΠΙΤΣΑ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Μαργαρίτα</span><span class="price">10€</span></div>
+<div class="row-simple"><span class="name">Μαργαρίτα</span><span class="price">10,00€</span></div>
 </div>
 </section>
 
@@ -493,43 +486,43 @@ footer{
 <section id="aperitif">
 <h2 class="reveal">APERITIF</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Aperol Spritz</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Campari Spritz</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Crodino</span><span class="price">5€</span></div>
+<div class="row-simple"><span class="name">Aperol Spritz</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Campari Spritz</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Crodino</span><span class="price">5,00€</span></div>
 </div>
 </section>
 
 <section id="spirits">
 <h2 class="reveal">ΠΟΤΑ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Απλά</span><span class="price">από 7€</span></div>
-<div class="row-simple"><span class="name">Special</span><span class="price">από 9€</span></div>
-<div class="row-simple"><span class="name">Premium</span><span class="price">από 14€</span></div>
-<div class="row-simple"><span class="name">Malt</span><span class="price">από 14€</span></div>
+<div class="row-simple"><span class="name">Απλά</span><span class="price">7,00€</span></div>
+<div class="row-simple"><span class="name">Special</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Premium</span><span class="price">14,00€</span></div>
+<div class="row-simple"><span class="name">Malt</span><span class="price">14,00€</span></div>
 </div>
 </section>
 
 <section id="cocktails">
 <h2 class="reveal">COCKTAILS</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Bloody Mary</span><span class="price">10€</span></div>
-<div class="row-simple"><span class="name">Bermejo Blazer</span><span class="price">9,5€</span></div>
-<div class="row-simple"><span class="name">Classic Mojito</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Margarita</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Paloma</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Daiquiri</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Cosmopolitan</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Rude Cosmopolitan</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Catalina Margarita</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Negroni</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Old Fashioned</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Manhattan</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Amaretto Sour</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Kir Royale</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Espresso Martini</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Americano</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Gin Fizz</span><span class="price">9€</span></div>
-<div class="row-simple"><span class="name">Pina Colada</span><span class="price">9€</span></div>
+<div class="row-simple"><span class="name">Bloody Mary</span><span class="price">10,00€</span></div>
+<div class="row-simple"><span class="name">Bermejo Blazer</span><span class="price">9,50€</span></div>
+<div class="row-simple"><span class="name">Classic Mojito</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Margarita</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Paloma</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Daiquiri</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Cosmopolitan</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Rude Cosmopolitan</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Catalina Margarita</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Negroni</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Old Fashioned</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Manhattan</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Amaretto Sour</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Kir Royale</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Espresso Martini</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Americano</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Gin Fizz</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Pina Colada</span><span class="price">9,00€</span></div>
 </div>
 </section>
 
@@ -537,20 +530,20 @@ footer{
 <h2 class="reveal">ΜΠΙΡΕΣ</h2>
 <div class="card reveal card-menu">
 <p class="menu-intro">Όλες οι μπύρες είναι 330ml.</p>
-<div class="row-simple"><span class="name">La Trappe</span><span class="price">7€</span></div>
-<div class="row-simple"><span class="name">Guinness Μαύρη</span><span class="price">6,5€</span></div>
-<div class="row-simple"><span class="name">Πικρή IPA</span><span class="price">6,5€</span></div>
-<div class="row-simple"><span class="name">Malt 'n Marvel Hoppy Series Double IPA</span><span class="price">6,5€</span></div>
-<div class="row-simple"><span class="name">Blue Monkey IPA</span><span class="price">6,5€</span></div>
-<div class="row-simple"><span class="name">Radeberger Lager</span><span class="price">5,5€</span></div>
-<div class="row-simple"><span class="name">Weihenstephaner Weiss</span><span class="price">5,5€</span></div>
-<div class="row-simple"><span class="name">Dathnes Lager</span><span class="price">5,5€</span></div>
-<div class="row-simple"><span class="name">Sol</span><span class="price">5,5€</span></div>
-<div class="row-simple"><span class="name">Peroni</span><span class="price">5,5€</span></div>
-<div class="row-simple"><span class="name">Clausthaler No Alcohol 0,5</span><span class="price">5,5€</span></div>
-<div class="row-simple"><span class="name">Stella</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Fisher Pilsner</span><span class="price">5€</span></div>
-<div class="row-simple"><span class="name">Heineken</span><span class="price">5€</span></div>
+<div class="row-simple"><span class="name">La Trappe</span><span class="price">7,00€</span></div>
+<div class="row-simple"><span class="name">Guinness Μαύρη</span><span class="price">6,50€</span></div>
+<div class="row-simple"><span class="name">Πικρή IPA</span><span class="price">6,50€</span></div>
+<div class="row-simple"><span class="name">Malt 'n Marvel Hoppy Series Double IPA</span><span class="price">6,50€</span></div>
+<div class="row-simple"><span class="name">Blue Monkey IPA</span><span class="price">6,50€</span></div>
+<div class="row-simple"><span class="name">Radeberger Lager</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Weihenstephaner Weiss</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Dathnes Lager</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Sol</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Peroni</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Clausthaler No Alcohol 0,5</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Stella</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Fisher Pilsner</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Heineken</span><span class="price">5,00€</span></div>
 </div>
 </section>
 
@@ -563,10 +556,13 @@ Petit Cafe — Vini & Aperitivi
 <script>
 const observer=new IntersectionObserver(entries=>{
  entries.forEach(entry=>{
-  if(!entry.isIntersecting)return;
-  entry.target.classList.add('show');
+  if(entry.isIntersecting){
+   entry.target.classList.add('show');
+  }else{
+   entry.target.classList.remove('show');
+  }
  });
-},{threshold:0.1,rootMargin:'0px 0px -8% 0px'});
+},{threshold:0.02,rootMargin:'0px 0px -4% 0px'});
 
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>

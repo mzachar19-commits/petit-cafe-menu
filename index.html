@@ -3,569 +3,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0f0d0b">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1a1510">
 <meta name="format-detection" content="telephone=no">
-<title>Petit Cafe — Vini & Aperitivi</title>
-
+<title>Petit Cafe — Επιλογή γλώσσας</title>
 <style>
 :root{
- --bg:#0f0d0b;
- --panel:rgba(255,255,255,.08);
- --panel2:rgba(255,255,255,.14);
- --gold:#c8a66a;
  --cream:#f6ead8;
- --muted:rgba(246,234,216,.7);
- --line:rgba(200,166,106,.28);
- --safe-t:max(env(safe-area-inset-top), 0px);
+ --gold:#c8a66a;
+ --line:rgba(200,166,106,.35);
  --safe-b:max(env(safe-area-inset-bottom), 0px);
  --safe-x:max(env(safe-area-inset-left), env(safe-area-inset-right), 0px);
- --reveal-dur:.88s;
- --reveal-ease:cubic-bezier(0.22,1,0.36,1);
- --reveal-delay:0ms;
 }
-
 *{box-sizing:border-box}
-html{
- scroll-behavior:smooth;
- scroll-padding-top:calc(58px + var(--safe-t));
- -webkit-tap-highlight-color:rgba(200,166,106,.18);
-}
-
+html,body{height:100%;margin:0}
 body{
- margin:0;
  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
- background:
- radial-gradient(circle at top right, rgba(110,31,47,.35), transparent 34%),
- linear-gradient(180deg,#17120f,#070605);
  color:var(--cream);
- overflow-x:hidden;
  min-height:100dvh;
- text-rendering:optimizeLegibility;
+ display:flex;
+ flex-direction:column;
 }
-
-main{
- max-width:760px;
- margin:0 auto;
- padding:0 max(18px, var(--safe-x)) calc(90px + var(--safe-b));
+.lang-bg{
+ position:fixed;
+ inset:0;
+ background:url("landing-sign.png") center/cover no-repeat;
+ z-index:0;
 }
-
-.hero{
- min-height:auto;
- padding:clamp(28px,6vw,48px) 0 clamp(20px,4vw,32px);
- display:grid;
- place-items:start center;
- border-bottom:1px solid var(--line);
- margin-bottom:8px;
+.lang-scrim{
+ position:fixed;
+ inset:0;
+ z-index:1;
+ background:
+  linear-gradient(180deg, rgba(10,8,6,.55) 0%, rgba(7,6,5,.72) 45%, rgba(5,4,3,.82) 100%);
 }
-
-.hero-box{
+.lang-main{
+ position:relative;
+ z-index:2;
+ flex:1;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ padding:max(24px, var(--safe-x)) max(20px, var(--safe-x)) calc(28px + var(--safe-b));
+}
+.lang-title{
+ margin:0 0 10px;
+ font-family:Georgia,serif;
+ font-size:clamp(22px, 5vw, 30px);
+ font-weight:500;
+ text-align:center;
+ text-shadow:0 2px 28px rgba(0,0,0,.75);
+ letter-spacing:.02em;
+}
+.lang-subtitle{
+ margin:0 0 clamp(22px, 6vw, 40px);
+ font-size:clamp(14px, 3.4vw, 17px);
+ font-weight:600;
+ text-align:center;
+ color:rgba(246,234,216,.88);
+ text-shadow:0 2px 18px rgba(0,0,0,.65);
+ letter-spacing:.03em;
+}
+.lang-row{
+ display:flex;
+ flex-direction:row;
+ align-items:stretch;
+ justify-content:center;
+ gap:clamp(20px, 6vw, 56px);
+ flex-wrap:wrap;
  width:100%;
  max-width:520px;
- text-align:center;
- animation:heroIn .9s ease both;
+ padding:12px 0;
+ overflow:visible;
 }
-
-@keyframes heroIn{
- from{opacity:0;transform:translateY(18px)}
- to{opacity:1;transform:translateY(0)}
-}
-
-.eyebrow{
- color:var(--gold);
- letter-spacing:.35em;
- font-size:12px;
- text-transform:uppercase;
- margin:0 0 14px;
-}
-
-h1{
- font-family:Georgia,serif;
- font-size:clamp(50px,13vw,82px);
- line-height:.95;
- margin:0;
- font-weight:500;
-}
-
-section{
- margin-bottom:42px;
- scroll-margin-top:calc(58px + var(--safe-t));
-}
-
-.reveal{
- opacity:0;
- transform:translate3d(0,36px,0) scale(.965);
- transition:
-  opacity var(--reveal-dur) var(--reveal-ease) var(--reveal-delay),
-  transform var(--reveal-dur) var(--reveal-ease) var(--reveal-delay);
- backface-visibility:hidden;
-}
-
-.reveal.show{
- opacity:1;
- transform:translate3d(0,0,0) scale(1);
-}
-
-@media (prefers-reduced-motion:reduce){
- html{scroll-behavior:auto}
- .reveal,.reveal.show{
-  transform:none;
-  transition-duration:.01ms !important;
-  transition-delay:0ms !important;
- }
-}
-
-.card{
- background:var(--panel);
- border:1px solid rgba(200,166,106,.16);
- border-radius:22px;
- padding:18px 16px;
- margin-bottom:12px;
- transition:background .25s ease, transform .25s ease;
-}
-
-@media (hover:hover){
- .card.reveal.show:hover{
-  transform:translate3d(0,-3px,0) scale(1);
-  background:var(--panel2);
- }
-}
-
-h2{
- font-family:Georgia,serif;
- color:var(--gold);
- font-size:34px;
- margin:0 0 16px;
- border-bottom:1px solid var(--line);
- padding-bottom:10px;
-}
-
-.row-simple{
- display:grid;
- grid-template-columns:1fr auto;
- gap:12px 16px;
- align-items:baseline;
- padding:11px 0;
- border-bottom:1px solid rgba(200,166,106,.12);
-}
-
-.row-simple:last-child{border-bottom:0}
-
-.card-menu{
- padding:6px 16px 16px;
-}
-
-.card-menu>.row-simple:first-child,
-.card-menu>.coffee-grid:first-child,
-.card-menu>.menu-intro:first-child{padding-top:4px}
-
-.menu-intro{
- margin:0 0 10px;
- padding:0 0 10px;
- border-bottom:1px solid rgba(200,166,106,.14);
- font-size:13px;
- line-height:1.45;
- color:var(--muted);
-}
-
-.menu-intro.menu-note{
- color:var(--cream);
- font-style:italic;
-}
-
-.coffee-grid .cg-head{
- display:grid;
- grid-template-columns:1fr minmax(3.25rem,4.5rem) minmax(3.25rem,4.5rem);
- gap:10px 12px;
- align-items:end;
- padding:10px 0 12px;
- margin-bottom:2px;
- border-bottom:1px solid var(--line);
- font-size:11px;
- letter-spacing:.12em;
- text-transform:uppercase;
- font-weight:800;
-}
-
-.cg-blank{min-height:1.1em}
-
-.cg-mhead,.cg-dhead{
- text-align:right;
- color:var(--gold);
- padding-bottom:6px;
- border-bottom:1px solid rgba(200,166,106,.28);
-}
-
-.row-coffee{
- display:grid;
- grid-template-columns:1fr minmax(3.25rem,4.5rem) minmax(3.25rem,4.5rem);
- gap:10px 12px;
- align-items:baseline;
- padding:11px 0;
- border-bottom:1px solid rgba(200,166,106,.12);
-}
-
-.row-coffee:last-child{border-bottom:0}
-
-.row-coffee .name{
- font-size:clamp(15px,3.8vw,17px);
- font-weight:800;
- line-height:1.35;
-}
-
-.name .star{color:var(--gold);font-weight:900}
-
-.row-coffee .desc{
- display:block;
- margin-top:6px;
- font-size:12px;
- font-weight:500;
- color:var(--muted);
- line-height:1.45;
-}
-
-.p-m,.p-d{
- font-weight:900;
- text-align:right;
- color:var(--gold);
- font-variant-numeric:tabular-nums;
-}
-
-.p-m.empty,.p-d.empty{
- color:rgba(246,234,216,.35);
- font-weight:700;
-}
-
-.row-simple .name{
- font-size:clamp(15px,3.8vw,17px);
- font-weight:800;
- line-height:1.35;
-}
-
-.row-simple .desc{
- display:block;
- margin-top:6px;
- font-size:12px;
- font-weight:500;
- color:var(--muted);
- line-height:1.45;
-}
-
-.row-simple .price{
- color:var(--gold);
- font-weight:900;
- text-align:right;
- font-variant-numeric:tabular-nums;
-}
-
-.en{
- display:block;
- margin-top:3px;
- color:var(--muted);
- font-size:13px;
-}
-
-.note{
- margin-top:16px;
- padding:14px 16px;
- border-radius:18px;
- background:rgba(200,166,106,.12);
- border:1px solid var(--line);
- font-size:13px;
- line-height:1.5;
-}
-
-footer{
- text-align:center;
- color:var(--muted);
- padding:20px max(0px, var(--safe-x)) calc(8px + var(--safe-b));
- border-top:1px solid var(--line);
-}
-
-.category-strip-wrap{
- position:sticky;
- top:env(safe-area-inset-top, 0px);
- z-index:40;
- margin:0 calc(-1 * max(18px, var(--safe-x))) 14px;
- padding:10px max(12px, var(--safe-x)) 12px;
- background:linear-gradient(180deg, rgba(7,6,5,.94) 0%, rgba(7,6,5,.72) 70%, transparent 100%);
- backdrop-filter:blur(12px);
- -webkit-backdrop-filter:blur(12px);
- border-bottom:1px solid rgba(200,166,106,.12);
-}
-
-.category-strip{
+.lang-tile{
+ flex:1 1 140px;
+ max-width:220px;
+ min-height:min(44vw, 200px);
  display:flex;
- gap:8px;
- overflow-x:auto;
- overscroll-behavior-x:contain;
- scroll-snap-type:x proximity;
- padding-bottom:4px;
- scrollbar-width:none;
- -ms-overflow-style:none;
- touch-action:pan-x;
-}
-
-.category-strip::-webkit-scrollbar{display:none}
-
-.category-strip a{
- flex:0 0 auto;
- scroll-snap-align:start;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ padding:22px 18px;
  text-decoration:none;
  color:var(--cream);
- font-size:14px;
- font-weight:750;
- padding:12px 16px;
- min-height:44px;
- display:inline-flex;
- align-items:center;
- border-radius:999px;
- background:var(--panel);
- border:1px solid rgba(200,166,106,.2);
- white-space:nowrap;
+ background:rgba(10,9,8,.55);
+ border:1px solid var(--line);
+ border-radius:22px;
+ backdrop-filter:blur(10px);
+ -webkit-backdrop-filter:blur(10px);
+ box-shadow:0 18px 48px rgba(0,0,0,.45);
+ transition:border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .28s ease;
 }
-
-.category-strip a:active{
- background:var(--panel2);
+.lang-tile:hover,.lang-tile:focus-visible{
+ transform:translateY(-4px);
+ border-color:var(--gold);
+ background:rgba(18,15,12,.68);
+ box-shadow:0 22px 52px rgba(0,0,0,.5);
+ outline:none;
+}
+.lang-tile-inner{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:14px;
+ opacity:0;
+ will-change:transform,opacity;
+}
+.lang-tile--el .lang-tile-inner{
+ animation:langFromBelow .78s cubic-bezier(0.22,1,0.36,1) .12s forwards;
+}
+.lang-tile--en .lang-tile-inner{
+ animation:langFromAbove .78s cubic-bezier(0.22,1,0.36,1) .12s forwards;
+}
+@keyframes langFromBelow{
+ from{
+  opacity:0;
+  transform:translate3d(0,52px,0);
+ }
+ to{
+  opacity:1;
+  transform:translate3d(0,0,0);
+ }
+}
+@keyframes langFromAbove{
+ from{
+  opacity:0;
+  transform:translate3d(0,-52px,0);
+ }
+ to{
+  opacity:1;
+  transform:translate3d(0,0,0);
+ }
+}
+@media (prefers-reduced-motion:reduce){
+ .lang-tile--el .lang-tile-inner,
+ .lang-tile--en .lang-tile-inner{
+  animation:none;
+  opacity:1;
+  transform:none;
+ }
+ .lang-tile:hover,.lang-tile:focus-visible{transform:none}
+}
+.lang-flag{
+ width:clamp(100px, 28vw, 132px);
+ height:auto;
+ display:block;
+ flex-shrink:0;
+ border-radius:10px;
+ box-shadow:0 6px 20px rgba(0,0,0,.4);
+}
+.lang-flag--gr{
+ aspect-ratio:3/2;
+ object-fit:contain;
+}
+.lang-flag--gb{
+ aspect-ratio:2/1;
+}
+.lang-label{
+ font-size:clamp(16px, 4vw, 19px);
+ font-weight:750;
+ letter-spacing:.04em;
+ margin-top:4px;
 }
 </style>
 </head>
-
 <body>
-
-<main>
-
-<header class="hero">
-<div class="hero-box">
-<p class="eyebrow">Petit Cafe</p>
-<h1>Vini &<br>Aperitivi</h1>
-</div>
-</header>
-
-<div class="category-strip-wrap" aria-label="Κατηγορίες μενού">
-<nav class="category-strip">
-<a href="#coffee">Καφέδες</a>
-<a href="#juices">Χυμοί</a>
-<a href="#tea">Τσάι</a>
-<a href="#homemade">Σπιτικά</a>
-<a href="#soft">Ανθρακούχα</a>
-<a href="#snacks">Snacks</a>
-<a href="#club">Club</a>
-<a href="#salads">Σαλάτες</a>
-<a href="#pizza">Πίτσα</a>
-<a href="#desserts">Γλυκά</a>
-<a href="#aperitif">Aperitif</a>
-<a href="#spirits">Ποτά</a>
-<a href="#cocktails">Cocktails</a>
-<a href="#beers">Μπύρες</a>
-</nav>
-</div>
-
-<section id="coffee">
-<h2 class="reveal">Καφέδες</h2>
-<div class="card reveal card-menu">
-<div class="coffee-grid">
-<div class="cg-head">
-<span class="cg-blank" aria-hidden="true"></span>
-<span class="cg-mhead">ΜΟΝΟΣ</span>
-<span class="cg-dhead">ΔΙΠΛΟΣ</span>
-</div>
-<div class="row-coffee"><span class="name">Εσπρέσσο</span><span class="p-m">2,80€</span><span class="p-d">3,50€</span></div>
-<div class="row-coffee"><span class="name">Αμερικάνο</span><span class="p-m">3,70€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Εσπρέσσο Μακιάτο</span><span class="p-m">3,10€</span><span class="p-d">4,10€</span></div>
-<div class="row-coffee"><span class="name">Εσπρέσσο φρέντο</span><span class="p-m">3,50€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο φρέντο</span><span class="p-m">3,80€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο φρέντο με γεύσεις<span class="star">*</span></span><span class="p-m">4,60€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο</span><span class="p-m">3,80€</span><span class="p-d">4,30€</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο Βιενουά</span><span class="p-m">4,60€</span><span class="p-d">5,10€</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο διάφορες γεύσεις<span class="star">*</span></span><span class="p-m">4,60€</span><span class="p-d">5,10€</span></div>
-<div class="row-coffee"><span class="name">Λάττε</span><span class="p-m">4,30€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Νες / Nes Cafe</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Φραπέ</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Φραπέ με Baileys</span><span class="p-m">7,50€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Γαλλικός καφές</span><span class="p-m">3,80€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Ιρλανδικός καφές</span><span class="p-m">7,00€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Ελληνικός</span><span class="p-m">3,10€</span><span class="p-d">3,80€</span></div>
-<div class="row-coffee"><span class="name">Ζεστή σοκολάτα<span class="star">*</span></span><span class="p-m">4,00€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Κρύα σοκολάτα<span class="star">*</span></span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Σοκολάτα Βιενουά</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
+<div class="lang-bg" aria-hidden="true"></div>
+<div class="lang-scrim" aria-hidden="true"></div>
+<div class="lang-main">
+<h1 class="lang-title">Petit Cafe — Vini &amp; Aperitivi</h1>
+<p class="lang-subtitle">Επιλέξτε γλώσσα / Choose language</p>
+<div class="lang-row">
+<a class="lang-tile lang-tile--el" href="el.html" aria-label="Μενού στα ελληνικά">
+<span class="lang-tile-inner">
+<img class="lang-flag lang-flag--gr" src="flag-gr.png" alt="" width="300" height="200" decoding="async">
+<span class="lang-label">Ελληνικά</span>
+</span>
+</a>
+<a class="lang-tile lang-tile--en" href="en.html" aria-label="Menu in English">
+<span class="lang-tile-inner">
+<svg class="lang-flag lang-flag--gb" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="5"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="3"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>
+<span class="lang-label">English</span>
+</span>
+</a>
 </div>
 </div>
-<div class="note reveal">*Γεύσεις: Καραμέλα, Φράουλα, Φουντούκι, Βανίλια, Πραλίνα</div>
-</section>
-
-<section id="juices">
-<h2 class="reveal">ΧΥΜΟΙ</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Φυσικός χυμός πορτοκάλι 330ml</span><span class="price">4,00€</span></div>
-<div class="row-simple"><span class="name">Ανάμεικτος φυσικός χυμός 330ml</span><span class="price">4,50€</span></div>
-<div class="row-simple"><span class="name">Χυμός 330ml</span><span class="price">3,60€</span></div>
-</div>
-</section>
-
-<section id="tea">
-<h2 class="reveal">ΤΣΑΙ</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Τσάι (ρωτήστε μας)</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Χαμομήλι</span><span class="price">4,00€</span></div>
-</div>
-</section>
-
-<section id="homemade">
-<h2 class="reveal">ΣΠΙΤΙΚΑ ΡΟΦΗΜΑΤΑ</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Σπιτική λεμονάδα με τζίντζερ 500ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Σπιτική λεμονάδα με μαστίχα Χίου &amp; λάιμ 500ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Σπιτική βυσσινάδα 500ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Σπιτική μανταρινάδα 500ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Holy Ginger κρύο ή ζεστό 500ml<span class="desc">Ρόφημα με μέλι ανθέων, φρεσκοστυμμένο χυμό τζίντζερ και λεμόνι. Δροσιστική και πικάντικη γεύση, χωρίς ζάχαρη και συντηρητικά.</span></span><span class="price">6,50€</span></div>
-</div>
-</section>
-
-<section id="soft">
-<h2 class="reveal">ΑΝΘΡΑΚΟΥΧΑ</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Πορτοκαλάδα με ανθρακικό 250ml</span><span class="price">3,60€</span></div>
-<div class="row-simple"><span class="name">Coca Cola / Zero 250ml</span><span class="price">3,60€</span></div>
-<div class="row-simple"><span class="name">Pink Grapefruit Soda OZ 330ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Yuzu - Cucumber Soda OZ 330ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Pelegrino / Ξυνό Νερό 360ml</span><span class="price">3,60€</span></div>
-<div class="row-simple"><span class="name">Νερό</span><span class="price">0,80€</span></div>
-</div>
-</section>
-
-<section id="snacks">
-<h2 class="reveal">SNACKS</h2>
-<div class="card reveal card-menu">
-<p class="menu-intro menu-note">*Σημείωση: Τα ψωμάκια είναι κατεψυγμένα.</p>
-<div class="row-simple"><span class="name">Σολομού</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Παστράμι</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Ζαμπόν Πράγας</span><span class="price">6,00€</span></div>
-<div class="row-simple"><span class="name">Μορταδέλα</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Προσούτο</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Σαλάμι</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Τοστ γαλοπούλα - τυρί</span><span class="price">4,00€</span></div>
-<div class="row-simple"><span class="name">Τοστ ζαμπόν - τυρί</span><span class="price">4,00€</span></div>
-<div class="row-simple"><span class="name">Μίνι μπριός</span><span class="price">2,50€</span></div>
-</div>
-</section>
-
-<section id="club">
-<h2 class="reveal">CLUB SANDWICHES</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Club sandwich Salmon</span><span class="price">10,00€</span></div>
-<div class="row-simple"><span class="name">Club sandwich pastrami</span><span class="price">8,50€</span></div>
-<div class="row-simple"><span class="name">Club sandwich γαλοπούλα</span><span class="price">7,50€</span></div>
-<div class="row-simple"><span class="name">Club sandwich ζαμπόν</span><span class="price">7,50€</span></div>
-</div>
-</section>
-
-<section id="salads">
-<h2 class="reveal">ΣΑΛΑΤΕΣ</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Σολομού</span><span class="price">10,00€</span></div>
-<div class="row-simple"><span class="name">Caesar’s</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Προσούτο</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Caprese</span><span class="price">7,50€</span></div>
-</div>
-</section>
-
-<section id="pizza">
-<h2 class="reveal">ΠΙΤΣΑ</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Μαργαρίτα</span><span class="price">10,00€</span></div>
-</div>
-</section>
-
-<section id="desserts">
-<h2 class="reveal">ΓΛΥΚΑ</h2>
-<div class="note reveal">Ρωτήστε μας για τα γλυκά ημέρας.</div>
-</section>
-
-<section id="aperitif">
-<h2 class="reveal">APERITIF</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Aperol Spritz</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Campari Spritz</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Crodino</span><span class="price">5,00€</span></div>
-</div>
-</section>
-
-<section id="spirits">
-<h2 class="reveal">ΠΟΤΑ</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Απλά</span><span class="price">7,00€</span></div>
-<div class="row-simple"><span class="name">Special</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Premium</span><span class="price">14,00€</span></div>
-<div class="row-simple"><span class="name">Malt</span><span class="price">14,00€</span></div>
-</div>
-</section>
-
-<section id="cocktails">
-<h2 class="reveal">COCKTAILS</h2>
-<div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Bloody Mary</span><span class="price">10,00€</span></div>
-<div class="row-simple"><span class="name">Bermejo Blazer</span><span class="price">9,50€</span></div>
-<div class="row-simple"><span class="name">Classic Mojito</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Margarita</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Paloma</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Daiquiri</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Cosmopolitan</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Rude Cosmopolitan</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Catalina Margarita</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Negroni</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Old Fashioned</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Manhattan</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Amaretto Sour</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Kir Royale</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Espresso Martini</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Americano</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Gin Fizz</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Pina Colada</span><span class="price">9,00€</span></div>
-</div>
-</section>
-
-<section id="beers">
-<h2 class="reveal">ΜΠΙΡΕΣ</h2>
-<div class="card reveal card-menu">
-<p class="menu-intro">Όλες οι μπύρες είναι 330ml.</p>
-<div class="row-simple"><span class="name">La Trappe</span><span class="price">7,00€</span></div>
-<div class="row-simple"><span class="name">Guinness Μαύρη</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Πικρή IPA</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Malt 'n Marvel Hoppy Series Double IPA</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Blue Monkey IPA</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Radeberger Lager</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Weihenstephaner Weiss</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Dathnes Lager</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Sol</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Peroni</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Clausthaler No Alcohol 0,5</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Stella</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Fisher Pilsner</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Heineken</span><span class="price">5,00€</span></div>
-</div>
-</section>
-
-<footer>
-Petit Cafe — Vini & Aperitivi
-</footer>
-
-</main>
-
-<script>
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add('show');
-  }else{
-   entry.target.classList.remove('show');
-  }
- });
-},{threshold:0.02,rootMargin:'0px 0px -4% 0px'});
-
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
-
 </body>
 </html>

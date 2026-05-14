@@ -16,7 +16,7 @@ const pairs = [
   [">Καφέδες</a>", ">Coffee</a>"],
   [">Χυμοί</a>", ">Juices</a>"],
   [">Τσάι</a>", ">Tea</a>"],
-  [">Σπιτικά</a>", ">House drinks</a>"],
+  [">Σπιτικά</a>", ">HomaMade drinks</a>"],
   [">Ανθρακούχα</a>", ">Soft drinks</a>"],
   [">Σαλάτες</a>", ">Salads</a>"],
   [">Ποικιλία</a>", ">Platters</a>"],

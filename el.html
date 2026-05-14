@@ -676,15 +676,16 @@ h2{
  }
 }
 
-  #beers::before{
- background-position:center, 60% !important;
-}
+ @media (max-width: 768px){
 
+ body{
+  -webkit-overflow-scrolling:touch;
+ }
 
  .reveal{
-  transition-duration:.55s;
-  transform:translate3d(0,22px,0) scale(.98);
+  will-change:transform, opacity;
  }
+
 }
  
 .category-strip a:active{

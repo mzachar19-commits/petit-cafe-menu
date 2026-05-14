@@ -714,14 +714,48 @@ h2{
  color:rgba(255,255,255,.82);
 }
 
- #coffee::before,
-#poikilia::before,
-#beers::before,
-#salads::before,
-#club::before,
-#snacks::before{
- will-change:background-position;
- transition:background-position .08s linear;
+
+
+ #beers::before{
+ display:none;
+}
+
+#beers{
+ position:relative;
+ overflow:hidden;
+}
+
+.section-bg{
+ position:absolute;
+ inset:-12%;
+ width:124%;
+ height:124%;
+ object-fit:cover;
+ object-position:center 60%;
+ z-index:0;
+ will-change:transform;
+ transform:translate3d(0,0,0);
+}
+
+.section-overlay{
+ position:absolute;
+ inset:0;
+ z-index:0;
+ background:linear-gradient(100deg,
+  rgba(8,7,6,.90) 0%,
+  rgba(8,7,6,.70) 20%,
+  rgba(8,7,6,.22) 34%,
+  rgba(8,7,6,.04) 46%,
+  rgba(8,7,6,.06) 54%,
+  rgba(8,7,6,.28) 66%,
+  rgba(8,7,6,.72) 82%,
+  rgba(8,7,6,.88) 100%);
+}
+
+#beers > h2,
+#beers > .card{
+ position:relative;
+ z-index:1;
 }
  
 </style>
@@ -935,6 +969,8 @@ h2{
 </section>
 
 <section id="beers">
+<img class="section-bg parallax-bg" src="mpires.png" alt="">
+<div class="section-overlay"></div>
 <h2 class="reveal">ΜΠΙΡΕΣ</h2>
 <div class="card reveal card-menu">
 <p class="menu-intro">Όλες οι μπύρες είναι 330ml.</p>
@@ -974,7 +1010,7 @@ Petit Cafe — Vini & Aperitivi
 </main>
 
 <script>
-const observer = new IntersectionObserver(entries=>{
+const observer=new IntersectionObserver(entries=>{
  entries.forEach(entry=>{
   if(entry.isIntersecting){
    entry.target.classList.add('show');
@@ -986,46 +1022,28 @@ const observer = new IntersectionObserver(entries=>{
 
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-const parallaxSections = [
- { id:'coffee', x:'48%', base:56, speed:0.08 },
- { id:'poikilia', x:'52%', base:50, speed:0.08 },
- { id:'beers', x:'center', base:60, speed:0.07 },
- { id:'salads', x:'76%', base:50, speed:0.08 },
- { id:'club', x:'50%', base:50, speed:0.08 },
- { id:'snacks', x:'50%', base:50, speed:0.08 }
-];
+const parallaxImgs=document.querySelectorAll('.parallax-bg');
 
-let ticking = false;
+function moveParallax(){
+ const vh=window.innerHeight;
 
-function updateParallax(){
- const vh = window.innerHeight;
+ parallaxImgs.forEach(img=>{
+  const section=img.closest('section');
+  const rect=section.getBoundingClientRect();
 
- parallaxSections.forEach(item=>{
-  const el = document.getElementById(item.id);
-  if(!el) return;
-
-  const rect = el.getBoundingClientRect();
   if(rect.bottom < 0 || rect.top > vh) return;
 
-  const progress = (rect.top - vh / 2) * item.speed;
-  const y = item.base - progress;
-
-  el.style.setProperty('--parallax-x', item.x);
-  el.style.setProperty('--parallax-y', `${y}%`);
+  const move=(rect.top - vh / 2) * -0.08;
+  img.style.transform=`translate3d(0, ${move}px, 0)`;
  });
-
- ticking = false;
 }
 
 window.addEventListener('scroll', ()=>{
- if(!ticking){
-  window.requestAnimationFrame(updateParallax);
-  ticking = true;
- }
+ requestAnimationFrame(moveParallax);
 },{passive:true});
 
-window.addEventListener('resize', updateParallax);
-updateParallax();
+window.addEventListener('resize', moveParallax);
+moveParallax();
 </script>
 
 </body>

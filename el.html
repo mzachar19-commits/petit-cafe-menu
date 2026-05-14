@@ -507,6 +507,30 @@ h2{
  line-height:1.45;
 }
 
+.row-simple.row-beer{
+ align-items:start;
+ padding-top:14px;
+ padding-bottom:14px;
+}
+
+.row-simple.row-beer .price{
+ align-self:start;
+ padding-top:2px;
+}
+
+.beer-meta{
+ display:block;
+ margin-top:4px;
+ font-size:12px;
+ font-weight:700;
+ letter-spacing:.03em;
+ color:rgba(200,166,106,.9);
+}
+
+#beers .row-beer .desc{
+ margin-top:8px;
+}
+
 .row-simple .price{
  color:var(--gold);
  font-weight:900;
@@ -742,7 +766,7 @@ h2{
 </div>
 
 <section id="coffee">
-<div class="section-photo" aria-hidden="true">
+<div class="section-photo reveal" aria-hidden="true">
 <img class="section-photo-img" src="cafes.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
@@ -820,7 +844,7 @@ h2{
 </section>
 
 <section id="snacks">
-<div class="section-photo" aria-hidden="true">
+<div class="section-photo reveal" aria-hidden="true">
 <img class="section-photo-img" src="snack.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
@@ -842,22 +866,22 @@ h2{
 </section>
 
 <section id="club">
-<div class="section-photo" aria-hidden="true">
+<div class="section-photo reveal" aria-hidden="true">
 <img class="section-photo-img" src="club.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">CLUB SANDWICHES</h2>
-<p class="section-lead reveal">Κλασικό club σε στρώσεις — σολομός, παστράμι, γαλοπούλα ή ζαμπόν.</p>
+<p class="section-lead reveal">Σολομός, παστράμι, γαλοπούλα, ζαμπόν. Σερβίρεται με σαλάτα.</p>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Club sandwich σολομού</span><span class="price">10,00€</span></div>
-<div class="row-simple"><span class="name">Club sandwich παστράμι</span><span class="price">8,50€</span></div>
-<div class="row-simple"><span class="name">Club sandwich γαλοπούλα</span><span class="price">7,50€</span></div>
-<div class="row-simple"><span class="name">Club sandwich ζαμπόν</span><span class="price">7,50€</span></div>
+<div class="row-simple"><span class="name">Σολομός</span><span class="price">10,00€</span></div>
+<div class="row-simple"><span class="name">Παστράμι</span><span class="price">8,50€</span></div>
+<div class="row-simple"><span class="name">Γαλοπούλα</span><span class="price">7,50€</span></div>
+<div class="row-simple"><span class="name">Ζαμπόν</span><span class="price">7,50€</span></div>
 </div>
 </section>
 
 <section id="salads">
-<div class="section-photo" aria-hidden="true">
+<div class="section-photo reveal" aria-hidden="true">
 <img class="section-photo-img" src="salates.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
@@ -872,7 +896,7 @@ h2{
 </section>
 
 <section id="poikilia">
-<div class="section-photo" aria-hidden="true">
+<div class="section-photo reveal" aria-hidden="true">
 <img class="section-photo-img" src="pikilia.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
@@ -941,28 +965,27 @@ h2{
 </section>
 
 <section id="beers">
-<div class="section-photo" aria-hidden="true">
+<div class="section-photo reveal" aria-hidden="true">
 <img class="section-photo-img" src="mpires.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">ΜΠΙΡΕΣ</h2>
-<p class="section-lead reveal">Lager, Weiss, IPA &amp; χωρίς αλκοόλ — κλασικές &amp; ειδικές ετικέτες.</p>
+<p class="section-lead reveal">Ξανθιές, σιταρένιες, IPA και χωρίς αλκοόλ — κλασικές και ειδικές ετικέτες.</p>
 <div class="card reveal card-menu">
 <p class="menu-intro">Όλες οι μπύρες είναι 330ml.</p>
-<div class="row-simple"><span class="name">La Trappe</span><span class="price">7,00€</span></div>
-<div class="row-simple"><span class="name">Guinness Μαύρη</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Πικρή IPA</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Malt 'n Marvel Hoppy Series Double IPA</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Blue Monkey IPA</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Radeberger Lager</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Weihenstephaner Weiss</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Dathnes Lager</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Sol</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Peroni</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Clausthaler No Alcohol 0,5</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Stella</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Fisher Pilsner</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Heineken</span><span class="price">5,00€</span></div>
+<div class="row-simple row-beer"><span class="name">La Trappe<span class="beer-meta">Quadrupel Trappist – 10% vol</span><span class="desc">Δυνατή μοναστηριακή μπίρα με αρώματα καραμέλας, ώριμων φρούτων και μπαχαρικών. Περιέχει βύνη κριθαριού, λυκίσκο και μαγιά.</span></span><span class="price">7,00€</span></div>
+<div class="row-simple row-beer"><span class="name">Guinness / Μαύρη<span class="beer-meta">8% vol</span><span class="desc">Μαύρη μπίρα με πλούσιο σώμα, νότες καφέ και σοκολάτας και καβουρδισμένη επίγευση. Περιέχει καβουρδισμένη βύνη και λυκίσκο.</span></span><span class="price">6,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Πικρή IPA<span class="beer-meta">5,5% vol</span><span class="desc">IPA με έντονη πικράδα και αρώματα εσπεριδοειδών και τροπικών φρούτων. Περιέχει αυξημένη ποσότητα λυκίσκου και βύνης.</span></span><span class="price">6,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Blue Monkey – Malt 'n Marvel – Double IPA<span class="beer-meta">8% vol</span><span class="desc">Δυνατή IPA με γεμάτο σώμα και έντονα αρώματα τροπικών φρούτων και πεύκου. Περιέχει βύνη, λυκίσκο και μαγιά.</span></span><span class="price">6,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Radeberger<span class="beer-meta">Pilsner λάγκερ – 4,8% vol</span><span class="desc">Κλασική γερμανική pils με δροσιστική γεύση και διακριτική πικράδα λυκίσκου. Περιέχει βύνη κριθαριού και λυκίσκο.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Weihenstephaner<span class="beer-meta">Hefe Weissbier – 5,4% vol</span><span class="desc">Αφιλτράριστη σιταρένια μπίρα με αρώματα μπανάνας και γαρύφαλλου. Περιέχει σιτάρι, βύνη και μαγιά.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Dathenes<span class="beer-meta">Λάγκερ – 5% vol</span><span class="desc">Ελαφριά και δροσιστική λάγκερ με απαλή γεύση και ήπια πικράδα. Περιέχει βύνη, λυκίσκο και μαγιά.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Sol<span class="beer-meta">Λάγκερ – 4,5% vol</span><span class="desc">Ανάλαφρη και δροσιστική λάγκερ με απαλή γεύση που ταιριάζει ιδανικά με λεμόνι. Περιέχει βύνη και λυκίσκο.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Peroni<span class="beer-meta">Premium pilsner – 5,6% vol</span><span class="desc">Ιταλική pils με δροσερή γεύση και λουλουδάτα αρώματα. Περιέχει βύνη κριθαριού και λυκίσκο.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Clausthaler<span class="beer-meta">Μη αλκοολούχα λάγκερ – 0,5% vol</span><span class="desc">Μη αλκοολούχα λάγκερ με γεμάτη γεύση και διακριτικό άρωμα λυκίσκου. Περιέχει βύνη και λυκίσκο.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Stella Artois<span class="beer-meta">Λάγκερ / pilsner – 5% vol</span><span class="desc">Ξανθιά λάγκερ με ισορροπημένη γεύση και καθαρό τελείωμα. Περιέχει βύνη κριθαριού και λυκίσκο.</span></span><span class="price">5,00€</span></div>
+<div class="row-simple row-beer"><span class="name">Fischer<span class="beer-meta">Pilsner – 5%–5,5% vol</span><span class="desc">Γαλλική pils με γεμάτη γεύση βύνης και ελαφριά πικράδα. Περιέχει βύνη και λυκίσκο.</span></span><span class="price">5,00€</span></div>
+<div class="row-simple row-beer"><span class="name">Heineken<span class="beer-meta">Λάγκερ – 5% vol</span><span class="desc">Δροσιστική λάγκερ με απαλή πικράδα και χαρακτηριστικό άρωμα λυκίσκου. Περιέχει βύνη κριθαριού και λυκίσκο.</span></span><span class="price">5,00€</span></div>
 </div>
 </section>
 

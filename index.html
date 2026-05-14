@@ -13,6 +13,9 @@
  --line:rgba(200,166,106,.35);
  --safe-b:max(env(safe-area-inset-bottom), 0px);
  --safe-x:max(env(safe-area-inset-left), env(safe-area-inset-right), 0px);
+ --reveal-dur:.88s;
+ --reveal-ease:cubic-bezier(0.22,1,0.36,1);
+ --reveal-delay:0ms;
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
@@ -43,8 +46,10 @@ body{
  display:flex;
  flex-direction:column;
  align-items:center;
- justify-content:center;
- padding:max(24px, var(--safe-x)) max(20px, var(--safe-x)) calc(28px + var(--safe-b));
+ justify-content:flex-start;
+ padding:max(20px, var(--safe-x)) max(20px, var(--safe-x)) calc(36px + var(--safe-b));
+ min-height:100dvh;
+ padding-top:max(28px, min(10vh, 72px));
 }
 .lang-title{
  margin:0 0 10px;
@@ -167,14 +172,63 @@ body{
  letter-spacing:.04em;
  margin-top:4px;
 }
+
+.lang-legal-grid{
+ width:100%;
+ max-width:520px;
+ margin-top:clamp(28px, 7vw, 48px);
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:clamp(18px, 4.5vw, 32px);
+ align-items:start;
+}
+
+@media (max-width:640px){
+ .lang-legal-grid{
+  grid-template-columns:1fr;
+ }
+}
+
+.lang-legal{
+ margin:0;
+ font-size:clamp(12px, 3.15vw, 14px);
+ line-height:1.58;
+ text-align:center;
+ color:rgba(246,234,216,.9);
+ text-shadow:0 1px 14px rgba(0,0,0,.62);
+ font-weight:500;
+}
+
+.reveal{
+ opacity:0;
+ transform:translate3d(0,36px,0) scale(.965);
+ transition:
+  opacity var(--reveal-dur) var(--reveal-ease) var(--reveal-delay),
+  transform var(--reveal-dur) var(--reveal-ease) var(--reveal-delay);
+ backface-visibility:hidden;
+}
+
+.reveal.show{
+ opacity:1;
+ transform:translate3d(0,0,0) scale(1);
+}
+
+@media (prefers-reduced-motion:reduce){
+ .reveal,.reveal.show{
+  transform:none;
+  transition-duration:.01ms !important;
+  transition-delay:0ms !important;
+ }
+ .reveal{opacity:1}
+}
 </style>
 </head>
 <body>
 <div class="lang-bg" aria-hidden="true"></div>
 <div class="lang-scrim" aria-hidden="true"></div>
 <div class="lang-main">
-<h1 class="lang-title">Petit Cafe — Vini &amp; Aperitivi</h1>
-<p class="lang-subtitle">Επιλέξτε γλώσσα / Choose language</p>
+<h1 class="lang-title reveal">Petit Cafe — Vini &amp; Aperitivi</h1>
+<p class="lang-subtitle reveal">Επιλέξτε γλώσσα / Choose language</p>
 <div class="lang-row">
 <a class="lang-tile lang-tile--el" href="el.html" aria-label="Μενού στα ελληνικά">
 <span class="lang-tile-inner">
@@ -189,6 +243,23 @@ body{
 </span>
 </a>
 </div>
+<div class="lang-legal-grid">
+<p class="lang-legal reveal" lang="el">Στις τιμές περιλαμβάνεται το ΦΠΑ 24% στα ποτά και 13% στα τρόφιμα, καθώς και ο δημοτικός φόρος 0,5%. Ο καταναλωτής δεν έχει υποχρέωση να πληρώσει εάν δεν λάβει το νόμιμο παραστατικό στοιχείο (απόδειξη&nbsp;– τιμολόγιο).<br><br>Το κατάστημα διαθέτει φύλλο διαμαρτυρίας.</p>
+<p class="lang-legal reveal" lang="en">Prices include 24% VAT on drinks and 13% VAT on food, as well as a 0.5% municipal tax. The customer is not obliged to pay if they do not receive the legal receipt or invoice.<br><br>Complaint forms are available at the establishment.</p>
 </div>
+</div>
+<script>
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('show');
+  }else{
+   entry.target.classList.remove('show');
+  }
+ });
+},{threshold:0.02,rootMargin:'0px 0px -4% 0px'});
+
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>

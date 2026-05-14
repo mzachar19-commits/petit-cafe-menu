@@ -665,7 +665,7 @@ h2{
 .category-strip a:active{
  background:var(--panel2);
 }
- @media (max-width: 768px){
+@media (max-width: 768px){
 
  #coffee::before,
  #poikilia::before,
@@ -673,17 +673,17 @@ h2{
  #salads::before,
  #club::before,
  #snacks::before{
-
   background-attachment:scroll !important;
-
-  background-size:cover, cover !important;
-
-  background-position:center, center !important;
-
-  background-repeat:no-repeat !important;
+  transform:scale(1.03);
+  transition:transform .6s ease;
  }
 
+ .reveal{
+  transition-duration:.55s;
+  transform:translate3d(0,22px,0) scale(.98);
+ }
 }
+ 
 .category-strip a:active{
  background:var(--panel2);
 }

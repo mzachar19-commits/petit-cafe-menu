@@ -24,6 +24,7 @@
  --reveal-dur:.88s;
  --reveal-ease:cubic-bezier(0.22,1,0.36,1);
  --reveal-delay:0ms;
+ --section-radius:22px;
 }
 
 *{box-sizing:border-box}
@@ -63,7 +64,7 @@ main{
  }
  .section-photo{
   min-height:min(20dvh, 180px);
-  padding:min(2.5vw, 18px) max(12px, var(--safe-x));
+  padding:min(2.5vw, 18px) 0;
  }
  .section-photo-img{
   max-height:min(36dvh, 280px);
@@ -115,7 +116,7 @@ main > section{
  scroll-margin-top:calc(58px + var(--safe-t));
  background:#000000;
  color:var(--cream);
- border-radius:22px;
+ border-radius:var(--section-radius);
  overflow:hidden;
  border:1px solid rgba(200,166,106,.28);
  box-shadow:0 26px 70px rgba(0,0,0,.58);
@@ -164,7 +165,7 @@ main > section:has(.section-photo) > .note{
 .section-photo{
  position:relative;
  width:100%;
- border-radius:0;
+ border-radius:var(--section-radius) var(--section-radius) 0 0;
  overflow:hidden;
  margin:0;
  box-shadow:none;
@@ -173,7 +174,7 @@ main > section:has(.section-photo) > .note{
  display:flex;
  align-items:center;
  justify-content:center;
- padding:min(3.5vw, 14px) max(6px, var(--safe-x));
+ padding:min(3.5vw, 14px) 0;
  min-height:min(24dvh, 160px);
 }
 

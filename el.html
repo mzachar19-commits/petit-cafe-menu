@@ -143,7 +143,7 @@ section{
  background-size:cover, auto 66%;
  background-position:center, 48% 56%;
  background-repeat:no-repeat;
- background-attachment:fixed;
+ background-attachment:scroll;;
 }
 
 #poikilia::before{
@@ -159,7 +159,7 @@ section{
  background-size:cover, auto 66%;
  background-position:center, 52% 50%;
  background-repeat:no-repeat;
- background-attachment:fixed;
+background-attachment:scroll;
 }
 
 #coffee > *,#poikilia > *,#beers > *,#salads > *,#club > *,#snacks > *{
@@ -202,7 +202,7 @@ section{
  background-size:cover, auto 78%;
  background-position:center, 24% 48%;
  background-repeat:no-repeat, no-repeat;
- background-attachment:fixed;
+background-attachment:scroll;
 }
 
 #salads::before{
@@ -226,7 +226,7 @@ section{
  background-size:cover, auto 66%;
  background-position:center, 76% 50%;
  background-repeat:no-repeat;
- background-attachment:fixed;
+background-attachment:scroll;
 }
 
 #club::before{
@@ -250,7 +250,7 @@ section{
  background-size:cover, auto 66%;
  background-position:center, 50% 50%;
  background-repeat:no-repeat;
- background-attachment:fixed;
+ background-attachment:scroll;
 }
 
 #snacks::before{
@@ -274,7 +274,7 @@ section{
  background-size:cover, auto 66%;
  background-position:center, 50% 50%;
  background-repeat:no-repeat;
- background-attachment:fixed;
+ background-attachment:scroll;
 }
 
 #coffee .card,#beers .card,#salads .card,#club .card,#snacks .card{
@@ -713,6 +713,16 @@ h2{
 #coffee .desc{
  color:rgba(255,255,255,.82);
 }
+
+ #coffee::before,
+#poikilia::before,
+#beers::before,
+#salads::before,
+#club::before,
+#snacks::before{
+ will-change:background-position;
+ transition:background-position .08s linear;
+}
  
 </style>
 </head>
@@ -964,7 +974,7 @@ Petit Cafe — Vini & Aperitivi
 </main>
 
 <script>
-const observer=new IntersectionObserver(entries=>{
+const observer = new IntersectionObserver(entries=>{
  entries.forEach(entry=>{
   if(entry.isIntersecting){
    entry.target.classList.add('show');
@@ -975,6 +985,47 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:0.02,rootMargin:'0px 0px -4% 0px'});
 
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const parallaxSections = [
+ { id:'coffee', x:'48%', base:56, speed:0.08 },
+ { id:'poikilia', x:'52%', base:50, speed:0.08 },
+ { id:'beers', x:'center', base:60, speed:0.07 },
+ { id:'salads', x:'76%', base:50, speed:0.08 },
+ { id:'club', x:'50%', base:50, speed:0.08 },
+ { id:'snacks', x:'50%', base:50, speed:0.08 }
+];
+
+let ticking = false;
+
+function updateParallax(){
+ const vh = window.innerHeight;
+
+ parallaxSections.forEach(item=>{
+  const el = document.getElementById(item.id);
+  if(!el) return;
+
+  const rect = el.getBoundingClientRect();
+  if(rect.bottom < 0 || rect.top > vh) return;
+
+  const progress = (rect.top - vh / 2) * item.speed;
+  const y = item.base - progress;
+
+  el.style.setProperty('--parallax-x', item.x);
+  el.style.setProperty('--parallax-y', `${y}%`);
+ });
+
+ ticking = false;
+}
+
+window.addEventListener('scroll', ()=>{
+ if(!ticking){
+  window.requestAnimationFrame(updateParallax);
+  ticking = true;
+ }
+},{passive:true});
+
+window.addEventListener('resize', updateParallax);
+updateParallax();
 </script>
 
 </body>

@@ -8,6 +8,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
 <title>Petit Cafe — Vini & Aperitivi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -95,20 +98,27 @@ main{
 }
 
 .eyebrow{
+ font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+ font-style:italic;
+ font-weight:500;
+ font-size:clamp(15px,4vw,19px);
+ letter-spacing:.22em;
  color:var(--gold);
- letter-spacing:.35em;
- font-size:12px;
- text-transform:uppercase;
+ text-transform:none;
+ transform:skewX(-5deg);
  margin:0 0 14px;
 }
 
-h1{
- font-family:Georgia,serif;
- font-size:clamp(40px,11.5vw,82px);
- line-height:.95;
+.hero h1{
+ font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+ font-style:italic;
+ font-weight:600;
+ font-size:clamp(42px,12vw,86px);
+ line-height:.92;
+ letter-spacing:.02em;
  margin:0;
- font-weight:500;
  color:#1a1512;
+ transform:skewX(-5deg);
 }
 
 main > section{

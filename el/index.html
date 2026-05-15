@@ -17,6 +17,8 @@
  --bg:#ffffff;
  --panel:rgba(255,255,255,.08);
  --panel2:rgba(255,255,255,.14);
+ --menu-card:#1c1b19;
+ --menu-card-hover:#262422;
  --gold:#c8a66a;
  --cream:#f6ead8;
  --muted:rgba(246,234,216,.7);
@@ -262,79 +264,18 @@ main > section .row-simple .desc{
  color:rgba(255,255,255,.78);
 }
 
-#poikilia .card{
- background:rgba(10,9,8,.74);
- backdrop-filter:blur(14px);
- -webkit-backdrop-filter:blur(14px);
- border-color:rgba(200,166,106,.24);
+main > section .card{
  margin-bottom:0;
 }
 
-#coffee .card,#beers .card,#salads .card,#club .card,#snacks .card{
- background:linear-gradient(90deg,
-  rgba(10,9,8,.86) 0%,
-  rgba(10,9,8,.75) 16%,
-  rgba(10,9,8,.14) 36%,
-  rgba(10,9,8,.06) 48%,
-  rgba(10,9,8,.08) 52%,
-  rgba(10,9,8,.16) 64%,
-  rgba(10,9,8,.78) 80%,
-  rgba(10,9,8,.88) 100%);
+/* Product list panel — same wrapper as Cocktails (.card.card-menu) */
+main > section .card.card-menu{
+ background-color:var(--menu-card);
+ background-image:none;
  backdrop-filter:none;
  -webkit-backdrop-filter:none;
- border-color:rgba(200,166,106,.28);
- margin-bottom:0;
-}
-
-#beers .menu-intro,#snacks .menu-intro{
- color:var(--cream);
- text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 18px rgba(0,0,0,.65);
-}
-
-#beers .row-simple .name,
-#salads .row-simple .name,
-#club .row-simple .name,
-#snacks .row-simple .name{
- text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.55);
-}
-
-#beers .row-simple .price,
-#salads .row-simple .price,
-#club .row-simple .price,
-#snacks .row-simple .price{
- text-shadow:0 1px 3px rgba(0,0,0,.92), 0 0 12px rgba(0,0,0,.5);
-}
-
-#coffee .row-coffee .name,
-#coffee .coffee-grid .cg-mhead,
-#coffee .coffee-grid .cg-dhead{
- text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 12px rgba(0,0,0,.55);
-}
-
-#coffee .p-m,#coffee .p-d{
- text-shadow:0 1px 3px rgba(0,0,0,.92), 0 0 10px rgba(0,0,0,.48);
-}
-
-#coffee .note{
- text-shadow:0 1px 2px rgba(0,0,0,.85);
-}
-
-@media (hover:hover){
- #poikilia .card.reveal.show:hover{
-  background:rgba(18,15,12,.88);
- }
- #coffee .card.reveal.show:hover,
- #beers .card.reveal.show:hover,
- #salads .card.reveal.show:hover,
- #club .card.reveal.show:hover,
- #snacks .card.reveal.show:hover{
-  background:linear-gradient(90deg,
-   rgba(16,14,12,.90) 0%,
-   rgba(16,14,12,.22) 38%,
-   rgba(16,14,12,.10) 50%,
-   rgba(16,14,12,.24) 62%,
-   rgba(16,14,12,.90) 100%);
- }
+ border:1px solid rgba(200,166,106,.16);
+ border-radius:22px;
 }
 
 .reveal{
@@ -361,18 +302,15 @@ main > section .row-simple .desc{
 }
 
 .card{
- background:var(--panel);
- border:1px solid rgba(200,166,106,.16);
- border-radius:22px;
  padding:18px 16px;
  margin-bottom:12px;
- transition:background .25s ease, transform .25s ease;
+ transition:background-color .25s ease, transform .25s ease;
 }
 
 @media (hover:hover){
- .card.reveal.show:hover{
+ main > section .card.card-menu.reveal.show:hover{
   transform:translate3d(0,-3px,0) scale(1);
-  background:var(--panel2);
+  background-color:var(--menu-card-hover);
  }
 }
 
@@ -702,7 +640,7 @@ h2{
 #beers .desc,
 #poikilia .desc,
 #coffee .desc{
- color:rgba(255,255,255,.82);
+ color:rgba(255,255,255,.78);
 }
 
 #poikilia .price,
@@ -712,6 +650,21 @@ h2{
 #beers .price{
  color:#ffffff;
 }
+
+#poikilia .row-platter-head .price.empty{
+ color:rgba(255,255,255,.35);
+ font-weight:700;
+}
+
+#poikilia .row-platter-size{
+ padding-left:clamp(14px,4vw,22px);
+}
+
+#poikilia .row-platter-size .name,
+#poikilia .row-platter-size .price{
+ color:#e2c992;
+}
+
 
 #coffee .card .cg-mhead,
 #coffee .card .cg-dhead{
@@ -736,15 +689,12 @@ h2{
 #coffee .card .p-d.empty{
  color:rgba(255,255,255,.38);
 }
-
-
-
 </style>
 </head>
 
 <body>
 
-<p class="lang-bar"><a href="/">Αρχική</a> · <a href="/en">English</a></p>
+<p class="lang-bar"><a href="../" data-local-href="../index.html">Αρχική</a> · <a href="../en/" data-local-href="../en/index.html">English</a></p>
 
 <main>
 
@@ -757,12 +707,12 @@ h2{
 
 <div class="category-strip-wrap" aria-label="Κατηγορίες μενού">
 <nav class="category-strip">
-<a href="#coffee">Καφέδες</a>
+<a href="#coffee">Καφές</a>
 <a href="#juices">Χυμοί</a>
 <a href="#tea">Τσάι</a>
 <a href="#homemade">Σπιτικά</a>
-<a href="#soft">Ανθρακούχα</a>
-<a href="#snacks">Snacks</a>
+<a href="#soft">Αναψυκτικά</a>
+<a href="#snacks">Σνακ</a>
 <a href="#club">Club</a>
 <a href="#salads">Σαλάτες</a>
 <a href="#poikilia">Ποικιλία</a>
@@ -777,7 +727,7 @@ h2{
 
 <section id="coffee">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/cafes.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../cafes.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">Καφέδες</h2>
@@ -794,19 +744,19 @@ h2{
 <div class="row-coffee"><span class="name">Εσπρέσσο Μακιάτο</span><span class="p-m">3,10€</span><span class="p-d">4,10€</span></div>
 <div class="row-coffee"><span class="name">Εσπρέσσο φρέντο</span><span class="p-m">3,50€</span><span class="p-d empty">—</span></div>
 <div class="row-coffee"><span class="name">Καπουτσίνο φρέντο</span><span class="p-m">3,80€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο φρέντο με γεύσεις<span class="star">*</span></span><span class="p-m">4,60€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Freddo cappuccino with flavours<span class="star">*</span></span><span class="p-m">4,60€</span><span class="p-d empty">—</span></div>
 <div class="row-coffee"><span class="name">Καπουτσίνο</span><span class="p-m">3,80€</span><span class="p-d">4,30€</span></div>
 <div class="row-coffee"><span class="name">Καπουτσίνο Βιενουά</span><span class="p-m">4,60€</span><span class="p-d">5,10€</span></div>
-<div class="row-coffee"><span class="name">Καπουτσίνο διάφορες γεύσεις<span class="star">*</span></span><span class="p-m">4,60€</span><span class="p-d">5,10€</span></div>
+<div class="row-coffee"><span class="name">Cappuccino, assorted flavours<span class="star">*</span></span><span class="p-m">4,60€</span><span class="p-d">5,10€</span></div>
 <div class="row-coffee"><span class="name">Λάττε</span><span class="p-m">4,30€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Νες / Nes Cafe</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Nescafé / Nes Cafe</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
 <div class="row-coffee"><span class="name">Φραπέ</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
 <div class="row-coffee"><span class="name">Φραπέ με Baileys</span><span class="p-m">7,50€</span><span class="p-d empty">—</span></div>
 <div class="row-coffee"><span class="name">Γαλλικός καφές</span><span class="p-m">3,80€</span><span class="p-d empty">—</span></div>
 <div class="row-coffee"><span class="name">Ιρλανδικός καφές</span><span class="p-m">7,00€</span><span class="p-d empty">—</span></div>
 <div class="row-coffee"><span class="name">Ελληνικός</span><span class="p-m">3,10€</span><span class="p-d">3,80€</span></div>
-<div class="row-coffee"><span class="name">Ζεστή σοκολάτα<span class="star">*</span></span><span class="p-m">4,00€</span><span class="p-d empty">—</span></div>
-<div class="row-coffee"><span class="name">Κρύα σοκολάτα<span class="star">*</span></span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Hot chocolate<span class="star">*</span></span><span class="p-m">4,00€</span><span class="p-d empty">—</span></div>
+<div class="row-coffee"><span class="name">Iced chocolate<span class="star">*</span></span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
 <div class="row-coffee"><span class="name">Σοκολάτα Βιενουά</span><span class="p-m">4,50€</span><span class="p-d empty">—</span></div>
 </div>
 </div>
@@ -817,11 +767,10 @@ h2{
 <section id="juices">
 <h2 class="reveal">ΧΥΜΟΙ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Φυσικός χυμός πορτοκάλι 330ml</span><span class="price">4,00€</span></div>
-<div class="row-simple"><span class="name">Ανάμεικτος φυσικός χυμός 330ml</span><span class="price">4,50€</span></div>
-<div class="row-simple"><span class="name">Χυμός* 330ml</span><span class="price">3,60€</span></div>
+<div class="row-simple"><span class="name">Fresh orange juice 330ml</span><span class="price">4,00€</span></div>
+<div class="row-simple"><span class="name">Fresh mixed juice 330ml</span><span class="price">4,50€</span></div>
+<div class="row-simple"><span class="name">Χυμός 330ml</span><span class="price">3,60€</span></div>
 </div>
- <div class="note reveal">*Συσκευσμένος χυμός</div>
 </section>
 
 <section id="tea">
@@ -833,90 +782,93 @@ h2{
 </section>
 
 <section id="homemade">
-<h2 class="reveal">ΣΠΙΤΙΚΑ ΡΟΦΗΜΑΤΑ</h2>
+<h2 class="reveal">HOMEMADE DRINKS</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Σπιτική λεμονάδα με τζίντζερ 500ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Σπιτική λεμονάδα με μαστίχα Χίου &amp; λάιμ 500ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Σπιτική βυσσινάδα 500ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Σπιτική μανταρινάδα 500ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Holy Ginger κρύο ή ζεστό 500ml<span class="desc">Ρόφημα με μέλι ανθέων, φρεσκοστυμμένο χυμό τζίντζερ και λεμόνι. Δροσιστική και πικάντικη γεύση, χωρίς ζάχαρη και συντηρητικά.</span></span><span class="price">6,50€</span></div>
+<div class="row-simple"><span class="name">Homemade ginger lemonade 500ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Homemade lemonade with Chios mastic &amp; lime 500ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Homemade sour cherry drink 500ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Homemade mandarin drink 500ml</span><span class="price">5,00€</span></div>
+<div class="row-simple"><span class="name">Holy Ginger cold or hot 500ml<span class="desc">Drink with flower honey, freshly pressed ginger juice and lemon. Refreshing and spicy, with no added sugar or preservatives.</span></span><span class="price">6,50€</span></div>
 </div>
 </section>
 
 <section id="soft">
 <h2 class="reveal">ΑΝΘΡΑΚΟΥΧΑ</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Πορτοκαλάδα με ανθρακικό 250ml</span><span class="price">3,60€</span></div>
+<div class="row-simple"><span class="name">Sparkling orangeade 250ml</span><span class="price">3,60€</span></div>
 <div class="row-simple"><span class="name">Coca Cola / Zero 250ml</span><span class="price">3,60€</span></div>
 <div class="row-simple"><span class="name">Pink Grapefruit Soda OZ 330ml</span><span class="price">5,00€</span></div>
 <div class="row-simple"><span class="name">Yuzu - Cucumber Soda OZ 330ml</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Pelegrino / Ξυνό Νερό 360ml</span><span class="price">3,60€</span></div>
+<div class="row-simple"><span class="name">Pellegrino / sparkling mineral water 360ml</span><span class="price">3,60€</span></div>
 <div class="row-simple"><span class="name">Νερό</span><span class="price">0,80€</span></div>
 </div>
 </section>
 
 <section id="snacks">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/snack.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../snack.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
-<div class="card reveal card-menu">
 <h2 class="reveal">SNACKS</h2>
-<div class="row-simple"><span class="name">Σολομού</span><span class="price">6,50€</span></div>
-<div class="row-simple"><span class="name">Παστράμι</span><span class="price">6,50€</span></div>
+<p class="section-lead reveal">Toast, rolls, mini brioche &amp; handmade pie — fillings as on the list below.</p>
+<div class="card reveal card-menu">
+<p class="menu-intro menu-note">*Note: Bread rolls are served frozen.</p>
+<div class="row-simple"><span class="name">Salmon</span><span class="price">6,50€</span></div>
+<div class="row-simple"><span class="name">Pastrami</span><span class="price">6,50€</span></div>
 <div class="row-simple"><span class="name">Ζαμπόν Πράγας</span><span class="price">6,00€</span></div>
 <div class="row-simple"><span class="name">Μορταδέλα</span><span class="price">5,50€</span></div>
-<div class="row-simple"><span class="name">Προσούτο</span><span class="price">5,50€</span></div>
+<div class="row-simple"><span class="name">Prosciutto</span><span class="price">5,50€</span></div>
 <div class="row-simple"><span class="name">Σαλάμι</span><span class="price">5,00€</span></div>
-<div class="row-simple"><span class="name">Τοστ γαλοπούλα - τυρί</span><span class="price">4,00€</span></div>
+<div class="row-simple"><span class="name">Turkey &amp; cheese toast</span><span class="price">4,00€</span></div>
 <div class="row-simple"><span class="name">Τοστ ζαμπόν - τυρί</span><span class="price">4,00€</span></div>
 <div class="row-simple"><span class="name">Μίνι μπριός</span><span class="price">2,50€</span></div>
 <div class="row-simple"><span class="name">Χειροποίητη πίτα</span><span class="price">5,00€</span></div>
 </div>
- <div class="note reveal">Ψωμάκια Κατεψυγμένα</div>
 </section>
 
 <section id="club">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/club.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../club.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">CLUB SANDWICHES</h2>
-<p class="section-lead reveal">Σολομός, παστράμι, γαλοπούλα, ζαμπόν. Σερβίρεται με σαλάτα.</p>
+<p class="section-lead reveal">Salmon, pastrami, turkey, ham. Served with salad.</p>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Σολομός</span><span class="price">10,00€</span></div>
-<div class="row-simple"><span class="name">Παστράμι</span><span class="price">8,50€</span></div>
-<div class="row-simple"><span class="name">Γαλοπούλα</span><span class="price">7,50€</span></div>
-<div class="row-simple"><span class="name">Ζαμπόν</span><span class="price">7,50€</span></div>
+<div class="row-simple"><span class="name">Salmon</span><span class="price">10,00€</span></div>
+<div class="row-simple"><span class="name">Pastrami</span><span class="price">8,50€</span></div>
+<div class="row-simple"><span class="name">Turkey</span><span class="price">7,50€</span></div>
+<div class="row-simple"><span class="name">Ham</span><span class="price">7,50€</span></div>
 </div>
 </section>
 
 <section id="salads">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/salates.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../salates.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">ΣΑΛΑΤΕΣ</h2>
-<p class="section-lead reveal">Φρέσκες σαλάτες με σολομό, Caesar, προσούτο ή Caprese.</p>
+<p class="section-lead reveal">Fresh salads with salmon, Caesar, prosciutto or Caprese.</p>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Σολομού</span><span class="price">10,00€</span></div>
+<div class="row-simple"><span class="name">Salmon</span><span class="price">10,00€</span></div>
 <div class="row-simple"><span class="name">Caesar’s</span><span class="price">9,00€</span></div>
-<div class="row-simple"><span class="name">Προσούτο</span><span class="price">9,00€</span></div>
+<div class="row-simple"><span class="name">Prosciutto</span><span class="price">9,00€</span></div>
 <div class="row-simple"><span class="name">Caprese</span><span class="price">7,50€</span></div>
 </div>
 </section>
 
 <section id="poikilia">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/pikilia.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../pikilia.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">ΠΟΙΚΙΛΙΑ</h2>
-<p class="section-lead reveal">Πιατέλα τυριών, αλλαντικών ή ανάμεικτη για το τραπέζι.</p>
+<p class="section-lead reveal">Πλατό με επιλεγμένα αλλαντικά και τυριά. Συνοδεύεται με επιλεγμένα κριτσίνια.</p>
 <div class="card reveal card-menu">
 <div class="row-simple"><span class="name">Τυριών</span><span class="price">20,00€</span></div>
 <div class="row-simple"><span class="name">Αλλαντικών</span><span class="price">20,00€</span></div>
-<div class="row-simple"><span class="name">Ανάμεικτη</span><span class="price">28,00€</span></div>
+<div class="row-simple row-platter-head"><span class="name">Αλλαντικά / Τυριά</span><span class="price empty" aria-hidden="true">—</span></div>
+<div class="row-simple row-platter-size reveal"><span class="name">2 ατόμων</span><span class="price">20,00€</span></div>
+<div class="row-simple row-platter-size reveal"><span class="name">4 ατόμων</span><span class="price">30,00€</span></div>
 </div>
 </section>
 
@@ -925,7 +877,7 @@ h2{
 <div class="card reveal card-menu">
 <div class="row-simple"><span class="name">Μαργαρίτα*</span><span class="price">10,00€</span></div>
 </div>
-  <div class="note reveal">*Κατευψυγμένη</div>
+  <div class="note reveal">*Κατεψυγμένη</div>
 </section>
 
 <section id="desserts">
@@ -981,20 +933,20 @@ h2{
 
 <section id="beers">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/mpires.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../mpires.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
-<h2 class="reveal">ΜΠΙΡΕΣ</h2>
+<h2 class="reveal">ΜΠΥΡΕΣ</h2>
 <p class="section-lead reveal">Ξανθιές, σιταρένιες, IPA και χωρίς αλκοόλ — κλασικές και ειδικές ετικέτες.</p>
 <div class="card reveal card-menu">
 <p class="menu-intro">Όλες οι μπύρες είναι 330ml.</p>
-<div class="row-simple row-beer"><span class="name">La Trappe<span class="beer-meta">Quadrupel Trappist – 10% vol</span><span class="desc">Δυνατή μοναστηριακή μπίρα με αρώματα καραμέλας, ώριμων φρούτων και μπαχαρικών. Περιέχει βύνη κριθαριού, λυκίσκο και μαγιά.</span></span><span class="price">7,00€</span></div>
-<div class="row-simple row-beer"><span class="name">Guinness / Μαύρη<span class="beer-meta">8% vol</span><span class="desc">Μαύρη μπίρα με πλούσιο σώμα, νότες καφέ και σοκολάτας και καβουρδισμένη επίγευση. Περιέχει καβουρδισμένη βύνη και λυκίσκο.</span></span><span class="price">6,50€</span></div>
+<div class="row-simple row-beer"><span class="name">La Trappe<span class="beer-meta">Quadrupel Trappist – 10% vol</span><span class="desc">Δυνατή μοναστηριακή μπύρα με αρώματα καραμέλας, ώριμων φρούτων και μπαχαρικών. Περιέχει βύνη κριθαριού, λυκίσκο και μαγιά.</span></span><span class="price">7,00€</span></div>
+<div class="row-simple row-beer"><span class="name">Guinness / Μαύρη<span class="beer-meta">8% vol</span><span class="desc">Μαύρη μπύρα με πλούσιο σώμα, νότες καφέ και σοκολάτας και καβουρδισμένη επίγευση. Περιέχει καβουρδισμένη βύνη και λυκίσκο.</span></span><span class="price">6,50€</span></div>
 <div class="row-simple row-beer"><span class="name">Πικρή IPA<span class="beer-meta">5,5% vol</span><span class="desc">IPA με έντονη πικράδα και αρώματα εσπεριδοειδών και τροπικών φρούτων. Περιέχει αυξημένη ποσότητα λυκίσκου και βύνης.Κρήτη</span></span><span class="price">6,50€</span></div>
 <div class="row-simple row-beer"><span class="name">Malt 'n Marvel – Double IPA<span class="beer-meta">7,8% vol</span><span class="desc">Δυνατή IPA με γεμάτο σώμα και έντονα αρώματα τροπικών φρούτων και πεύκου. Περιέχει βύνη, λυκίσκο και μαγιά.Σαντορίνη</span></span><span class="price">6,50€</span></div>
  <div class="row-simple row-beer"><span class="name">Blue Monkey IPA<span class="beer-meta">6,5% vol</span><span class="desc">Μια ξανθιά, άκρως αρωματική μπύρα με μια νότα από φρέσκες νότες τροπικών και πυρηνόκαρπων φρούτων όπως μάνγκο, φρούτο του πάθους και ροδάκινο.Σαντορίνη</span></span><span class="price">6,50€</span></div>
 <div class="row-simple row-beer"><span class="name">Radeberger<span class="beer-meta">Pilsner λάγκερ – 4,8% vol</span><span class="desc">Κλασική γερμανική pils με δροσιστική γεύση και διακριτική πικράδα λυκίσκου. Περιέχει βύνη κριθαριού και λυκίσκο.</span></span><span class="price">5,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Weihenstephaner<span class="beer-meta">Hefe Weissbier – 5,4% vol</span><span class="desc">Αφιλτράριστη σιταρένια μπίρα με αρώματα μπανάνας και γαρύφαλλου. Περιέχει σιτάρι, βύνη και μαγιά.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Weihenstephaner<span class="beer-meta">Hefe Weissbier – 5,4% vol</span><span class="desc">Αφιλτράριστη σιταρένια μπύρα με αρώματα μπανάνας και γαρύφαλλου. Περιέχει σιτάρι, βύνη και μαγιά.</span></span><span class="price">5,50€</span></div>
 <div class="row-simple row-beer"><span class="name">Dathenes<span class="beer-meta">Λάγκερ – 4,5% vol</span><span class="desc">Ελαφριά και δροσιστική λάγκερ με απαλή γεύση και ήπια πικράδα. Περιέχει βύνη, λυκίσκο και μαγιά.</span></span><span class="price">5,50€</span></div>
 <div class="row-simple row-beer"><span class="name">Sol<span class="beer-meta">Λάγκερ – 4,5% vol</span><span class="desc">Ανάλαφρη και δροσιστική λάγκερ με απαλή γεύση που ταιριάζει ιδανικά με λεμόνι. Περιέχει βύνη και λυκίσκο.</span></span><span class="price">5,50€</span></div>
 <div class="row-simple row-beer"><span class="name">Peroni<span class="beer-meta">Premium pilsner – 5,6% vol</span><span class="desc">Ιταλική pils με δροσερή γεύση και λουλουδάτα αρώματα. Περιέχει βύνη κριθαριού και λυκίσκο.</span></span><span class="price">5,50€</span></div>
@@ -1024,6 +976,13 @@ Petit Cafe — Vini & Aperitivi
 </main>
 
 <script>
+(function(){
+ if(location.protocol!=='file:')return;
+ document.querySelectorAll('[data-local-href]').forEach(function(a){
+  a.href=a.getAttribute('data-local-href');
+ });
+})();
+
 const observer=new IntersectionObserver(entries=>{
  entries.forEach(entry=>{
   if(entry.isIntersecting){

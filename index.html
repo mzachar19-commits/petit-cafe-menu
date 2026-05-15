@@ -29,7 +29,7 @@ body{
 .lang-bg{
  position:fixed;
  inset:0;
- background:url("/landing-sign.png") center/cover no-repeat;
+ background:url("landing-sign.png") center/cover no-repeat;
  z-index:0;
 }
 .lang-scrim{
@@ -230,13 +230,13 @@ body{
 <h1 class="lang-title reveal">Petit Cafe — Vini &amp; Aperitivi</h1>
 <p class="lang-subtitle reveal">Επιλέξτε γλώσσα / Choose language</p>
 <div class="lang-row">
-<a class="lang-tile lang-tile--el" href="/el" aria-label="Μενού στα ελληνικά">
+<a class="lang-tile lang-tile--el" href="./el/" data-local-href="./el/index.html" aria-label="Μενού στα ελληνικά">
 <span class="lang-tile-inner">
-<img class="lang-flag lang-flag--gr" src="/flag-gr.png" alt="" width="300" height="200" decoding="async">
+<img class="lang-flag lang-flag--gr" src="flag-gr.png" alt="" width="300" height="200" decoding="async">
 <span class="lang-label">Ελληνικά</span>
 </span>
 </a>
-<a class="lang-tile lang-tile--en" href="/en" aria-label="Menu in English">
+<a class="lang-tile lang-tile--en" href="./en/" data-local-href="./en/index.html" aria-label="Menu in English">
 <span class="lang-tile-inner">
 <svg class="lang-flag lang-flag--gb" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="5"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="3"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>
 <span class="lang-label">English</span>
@@ -249,6 +249,13 @@ body{
 </div>
 </div>
 <script>
+(function(){
+ if(location.protocol!=='file:')return;
+ document.querySelectorAll('[data-local-href]').forEach(function(a){
+  a.href=a.getAttribute('data-local-href');
+ });
+})();
+
 const observer=new IntersectionObserver(entries=>{
  entries.forEach(entry=>{
   if(entry.isIntersecting){

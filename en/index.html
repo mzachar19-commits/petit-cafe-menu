@@ -8,12 +8,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
 <title>Petit Cafe — Vini & Aperitivi · English menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
 :root{
  --bg:#0f0d0b;
  --panel:rgba(255,255,255,.08);
  --panel2:rgba(255,255,255,.14);
+ --menu-card:#1c1b19;
+ --menu-card-hover:#262422;
  --gold:#c8a66a;
  --cream:#f6ead8;
  --muted:rgba(246,234,216,.7);
@@ -97,20 +102,27 @@ main{
 }
 
 .eyebrow{
+ font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+ font-style:italic;
+ font-weight:500;
+ font-size:clamp(15px,4vw,19px);
+ letter-spacing:.22em;
  color:var(--gold);
- letter-spacing:.35em;
- font-size:12px;
- text-transform:uppercase;
+ text-transform:none;
+ transform:skewX(-5deg);
  margin:0 0 14px;
 }
 
-h1{
- font-family:Georgia,serif;
- font-size:clamp(40px,11.5vw,82px);
- line-height:.95;
+.hero h1{
+ font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+ font-style:italic;
+ font-weight:600;
+ font-size:clamp(42px,12vw,86px);
+ line-height:.92;
+ letter-spacing:.02em;
  margin:0;
- font-weight:500;
  color:var(--cream);
+ transform:skewX(-5deg);
 }
 
 main > section{
@@ -254,79 +266,18 @@ main > section .row-simple .desc{
  color:rgba(255,255,255,.78);
 }
 
-#poikilia .card{
- background:rgba(10,9,8,.74);
- backdrop-filter:blur(14px);
- -webkit-backdrop-filter:blur(14px);
- border-color:rgba(200,166,106,.24);
+main > section .card{
  margin-bottom:0;
 }
 
-#coffee .card,#beers .card,#salads .card,#club .card,#snacks .card{
- background:linear-gradient(90deg,
-  rgba(10,9,8,.86) 0%,
-  rgba(10,9,8,.75) 16%,
-  rgba(10,9,8,.14) 36%,
-  rgba(10,9,8,.06) 48%,
-  rgba(10,9,8,.08) 52%,
-  rgba(10,9,8,.16) 64%,
-  rgba(10,9,8,.78) 80%,
-  rgba(10,9,8,.88) 100%);
+/* Product list panel — same wrapper as Cocktails (.card.card-menu) */
+main > section .card.card-menu{
+ background-color:var(--menu-card);
+ background-image:none;
  backdrop-filter:none;
  -webkit-backdrop-filter:none;
- border-color:rgba(200,166,106,.28);
- margin-bottom:0;
-}
-
-#beers .menu-intro,#snacks .menu-intro{
- color:var(--cream);
- text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 18px rgba(0,0,0,.65);
-}
-
-#beers .row-simple .name,
-#salads .row-simple .name,
-#club .row-simple .name,
-#snacks .row-simple .name{
- text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.55);
-}
-
-#beers .row-simple .price,
-#salads .row-simple .price,
-#club .row-simple .price,
-#snacks .row-simple .price{
- text-shadow:0 1px 3px rgba(0,0,0,.92), 0 0 12px rgba(0,0,0,.5);
-}
-
-#coffee .row-coffee .name,
-#coffee .coffee-grid .cg-mhead,
-#coffee .coffee-grid .cg-dhead{
- text-shadow:0 1px 3px rgba(0,0,0,.95), 0 0 12px rgba(0,0,0,.55);
-}
-
-#coffee .p-m,#coffee .p-d{
- text-shadow:0 1px 3px rgba(0,0,0,.92), 0 0 10px rgba(0,0,0,.48);
-}
-
-#coffee .note{
- text-shadow:0 1px 2px rgba(0,0,0,.85);
-}
-
-@media (hover:hover){
- #poikilia .card.reveal.show:hover{
-  background:rgba(18,15,12,.88);
- }
- #coffee .card.reveal.show:hover,
- #beers .card.reveal.show:hover,
- #salads .card.reveal.show:hover,
- #club .card.reveal.show:hover,
- #snacks .card.reveal.show:hover{
-  background:linear-gradient(90deg,
-   rgba(16,14,12,.90) 0%,
-   rgba(16,14,12,.22) 38%,
-   rgba(16,14,12,.10) 50%,
-   rgba(16,14,12,.24) 62%,
-   rgba(16,14,12,.90) 100%);
- }
+ border:1px solid rgba(200,166,106,.16);
+ border-radius:22px;
 }
 
 .reveal{
@@ -353,18 +304,15 @@ main > section .row-simple .desc{
 }
 
 .card{
- background:var(--panel);
- border:1px solid rgba(200,166,106,.16);
- border-radius:22px;
  padding:18px 16px;
  margin-bottom:12px;
- transition:background .25s ease, transform .25s ease;
+ transition:background-color .25s ease, transform .25s ease;
 }
 
 @media (hover:hover){
- .card.reveal.show:hover{
+ main > section .card.card-menu.reveal.show:hover{
   transform:translate3d(0,-3px,0) scale(1);
-  background:var(--panel2);
+  background-color:var(--menu-card-hover);
  }
 }
 
@@ -693,7 +641,7 @@ h2{
 #beers .desc,
 #poikilia .desc,
 #coffee .desc{
- color:rgba(255,255,255,.82);
+ color:rgba(255,255,255,.78);
 }
 
 #poikilia .price,
@@ -702,6 +650,20 @@ h2{
 #salads .price,
 #beers .price{
  color:#ffffff;
+}
+
+#poikilia .row-platter-head .price.empty{
+ color:rgba(255,255,255,.35);
+ font-weight:700;
+}
+
+#poikilia .row-platter-size{
+ padding-left:clamp(14px,4vw,22px);
+}
+
+#poikilia .row-platter-size .name,
+#poikilia .row-platter-size .price{
+ color:#e2c992;
 }
 
 #coffee .card .cg-mhead,
@@ -732,7 +694,7 @@ h2{
 
 <body>
 
-<p class="lang-bar"><a href="/">Home</a> · <a href="/el">Ελληνικά</a></p>
+<p class="lang-bar"><a href="../" data-local-href="../index.html">Home</a> · <a href="../el/" data-local-href="../el/index.html">Ελληνικά</a></p>
 
 <main>
 
@@ -765,7 +727,7 @@ h2{
 
 <section id="coffee">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/cafes.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../cafes.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">COFFEE</h2>
@@ -799,6 +761,7 @@ h2{
 </div>
 </div>
 <div class="note reveal">*Flavours: Caramel, Strawberry, Hazelnut, Vanilla, Praline</div>
+<div class="note reveal">*Plant milk +0,80€</div>
 </section>
 
 <section id="juices">
@@ -843,7 +806,7 @@ h2{
 
 <section id="snacks">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/snack.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../snack.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">SNACKS</h2>
@@ -865,7 +828,7 @@ h2{
 
 <section id="club">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/club.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../club.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">CLUB SANDWICHES</h2>
@@ -880,7 +843,7 @@ h2{
 
 <section id="salads">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/salates.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../salates.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">SALADS</h2>
@@ -895,23 +858,26 @@ h2{
 
 <section id="poikilia">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/pikilia.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../pikilia.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">PLATTERS</h2>
-<p class="section-lead reveal">Cheese board, cold cuts, or a mixed platter to share.</p>
+<p class="section-lead reveal">Platter with selected cold cuts and cheeses. Served with selected breadsticks.</p>
 <div class="card reveal card-menu">
 <div class="row-simple"><span class="name">Cheese selection</span><span class="price">20,00€</span></div>
 <div class="row-simple"><span class="name">Cold cuts selection</span><span class="price">20,00€</span></div>
-<div class="row-simple"><span class="name">Mixed platter</span><span class="price">28,00€</span></div>
+<div class="row-simple row-platter-head"><span class="name">Cold cuts / Cheese</span><span class="price empty" aria-hidden="true">—</span></div>
+<div class="row-simple row-platter-size reveal"><span class="name">2 persons</span><span class="price">20,00€</span></div>
+<div class="row-simple row-platter-size reveal"><span class="name">4 persons</span><span class="price">30,00€</span></div>
 </div>
 </section>
 
 <section id="pizza">
 <h2 class="reveal">PIZZA</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">Margherita</span><span class="price">10,00€</span></div>
+<div class="row-simple"><span class="name">Margherita*</span><span class="price">10,00€</span></div>
 </div>
+  <div class="note reveal">*Frozen</div>
 </section>
 
 <section id="desserts">
@@ -931,7 +897,7 @@ h2{
 <section id="spirits">
 <h2 class="reveal">SPIRITS</h2>
 <div class="card reveal card-menu">
-<div class="row-simple"><span class="name">House</span><span class="price">7,00€</span></div>
+<div class="row-simple"><span class="name">Standard</span><span class="price">7,00€</span></div>
 <div class="row-simple"><span class="name">Special</span><span class="price">9,00€</span></div>
 <div class="row-simple"><span class="name">Premium</span><span class="price">14,00€</span></div>
 <div class="row-simple"><span class="name">Malt</span><span class="price">14,00€</span></div>
@@ -944,6 +910,7 @@ h2{
 <div class="row-simple row-cocktail"><span class="name">Bloody Mary<span class="cocktail-ing">(Vodka, tomato juice, salt, pepper, tabasco, Worcestershire sauce, lemon juice)</span></span><span class="price">10,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Bermejo Blazer<span class="cocktail-ing">(Angostura bitters, Tequila Don Julio)</span></span><span class="price">9,50€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Classic Mojito<span class="cocktail-ing">(Rum, lime, mint, soda)</span></span><span class="price">9,00€</span></div>
+<div class="row-simple row-cocktail"><span class="name">Mastiha Mojito<span class="cocktail-ing">(Mastiha, lime, mint, soda)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Margarita<span class="cocktail-ing">(Tequila, Cointreau, lemon)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Paloma<span class="cocktail-ing">(Tequila, pink grapefruit, lime, soda)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Daiquiri<span class="cocktail-ing">(Rum, sugar, lime)</span></span><span class="price">9,00€</span></div>
@@ -951,6 +918,7 @@ h2{
 <div class="row-simple row-cocktail"><span class="name">Rude Cosmopolitan<span class="cocktail-ing">(Tequila, Cointreau, lime, cranberry juice)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Catalina Margarita<span class="cocktail-ing">(Tequila, Blue Curaçao, Cointreau, lime)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Negroni<span class="cocktail-ing">(Campari, gin, red vermouth)</span></span><span class="price">9,00€</span></div>
+<div class="row-simple row-cocktail"><span class="name">Boulevardier<span class="cocktail-ing">(Campari, American whiskey, red vermouth)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Old Fashioned<span class="cocktail-ing">(Bourbon whiskey, sugar, angostura)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Manhattan<span class="cocktail-ing">(Whiskey, sweet vermouth, angostura)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Amaretto Sour<span class="cocktail-ing">(Amaretto, lemon juice, sugar, bitter)</span></span><span class="price">9,00€</span></div>
@@ -958,31 +926,33 @@ h2{
 <div class="row-simple row-cocktail"><span class="name">Espresso Martini<span class="cocktail-ing">(Vodka, espresso, coffee liqueur)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Americano<span class="cocktail-ing">(Campari, Martini Rosso, soda)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Gin Fizz<span class="cocktail-ing">(Gin, lemon juice, sugar, soda)</span></span><span class="price">9,00€</span></div>
+<div class="row-simple row-cocktail"><span class="name">Dry Martini<span class="cocktail-ing">(Gin, Extra Dry Martini)</span></span><span class="price">9,00€</span></div>
 <div class="row-simple row-cocktail"><span class="name">Pina Colada<span class="cocktail-ing">(Rum, pineapple juice, coconut cream, lime)</span></span><span class="price">9,00€</span></div>
 </div>
 </section>
 
 <section id="beers">
 <div class="section-photo reveal" aria-hidden="true">
-<img class="section-photo-img" src="/mpires.png" alt="" loading="lazy" width="1200" height="800">
+<img class="section-photo-img" src="../mpires.png" alt="" loading="lazy" width="1200" height="800">
 <div class="section-photo-scrim"></div>
 </div>
 <h2 class="reveal">BEERS</h2>
 <p class="section-lead reveal">Pale lagers, wheat beers, IPA and alcohol-free — classic and speciality labels.</p>
 <div class="card reveal card-menu">
 <p class="menu-intro">All beers are 330ml.</p>
-<div class="row-simple row-beer"><span class="name">La Trappe<span class="beer-meta">Quadrupel Trappist – 10% vol</span><span class="desc">Strong Trappist quadrupel with caramel, ripe fruit and spice aromas. Contains barley malt, hops and yeast.</span></span><span class="price">7,00€</span></div>
-<div class="row-simple row-beer"><span class="name">Guinness / Draught Stout<span class="beer-meta">8% vol</span><span class="desc">Rich black stout with coffee and chocolate notes and a roasted finish. Contains roasted malt and hops.</span></span><span class="price">6,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Bitter IPA<span class="beer-meta">5.5% vol</span><span class="desc">IPA with pronounced bitterness and citrus and tropical fruit aromas. Higher hop and malt character.</span></span><span class="price">6,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Blue Monkey – Malt 'n Marvel – Double IPA<span class="beer-meta">8% vol</span><span class="desc">Strong double IPA with full body and intense tropical fruit and pine notes. Contains malt, hops and yeast.</span></span><span class="price">6,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Radeberger<span class="beer-meta">Pilsner Lager – 4.8% vol</span><span class="desc">Classic German pilsner, crisp with a gentle hop bitterness. Contains barley malt and hops.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">La Trappe<span class="beer-meta">Quadrupel Trappist – 10% vol</span><span class="desc">Strong monastic beer with aromas of caramel, ripe fruit and spices. Contains barley malt, hops and yeast.</span></span><span class="price">7,00€</span></div>
+<div class="row-simple row-beer"><span class="name">Guinness / Black<span class="beer-meta">8% vol</span><span class="desc">Dark beer with a rich body, notes of coffee and chocolate and a roasted finish. Contains roasted malt and hops.</span></span><span class="price">6,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Pikri IPA<span class="beer-meta">5.5% vol</span><span class="desc">IPA with pronounced bitterness and aromas of citrus and tropical fruit. Contains extra hops and malt. Crete</span></span><span class="price">6,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Malt 'n Marvel – Double IPA<span class="beer-meta">7.8% vol</span><span class="desc">Strong IPA with full body and intense aromas of tropical fruit and pine. Contains malt, hops and yeast. Santorini</span></span><span class="price">6,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Blue Monkey IPA<span class="beer-meta">6.5% vol</span><span class="desc">A pale, highly aromatic beer with fresh notes of tropical and stone fruit such as mango, passion fruit and peach. Santorini</span></span><span class="price">6,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Radeberger<span class="beer-meta">Pilsner lager – 4.8% vol</span><span class="desc">Classic German pils with a refreshing taste and subtle hop bitterness. Contains barley malt and hops.</span></span><span class="price">5,50€</span></div>
 <div class="row-simple row-beer"><span class="name">Weihenstephaner<span class="beer-meta">Hefe Weissbier – 5.4% vol</span><span class="desc">Unfiltered wheat beer with banana and clove aromas. Contains wheat, malt and yeast.</span></span><span class="price">5,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Dathenes<span class="beer-meta">Lager – 5% vol</span><span class="desc">Light, refreshing lager with a soft flavour and mild bitterness. Contains malt, hops and yeast.</span></span><span class="price">5,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Sol<span class="beer-meta">Lager – 4.5% vol</span><span class="desc">Light, refreshing lager with a gentle taste — great with a slice of lemon. Contains malt and hops.</span></span><span class="price">5,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Peroni<span class="beer-meta">Premium Pilsner – 5.6% vol</span><span class="desc">Italian pilsner, crisp with floral hop aromas. Contains barley malt and hops.</span></span><span class="price">5,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Clausthaler<span class="beer-meta">Non-Alcoholic Lager – 0.5% vol</span><span class="desc">Non-alcoholic lager with full flavour and a subtle hop aroma. Contains malt and hops.</span></span><span class="price">5,50€</span></div>
-<div class="row-simple row-beer"><span class="name">Stella Artois<span class="beer-meta">Lager / Pilsner – 5% vol</span><span class="desc">Pale lager with balanced flavour and a clean finish. Contains barley malt and hops.</span></span><span class="price">5,00€</span></div>
-<div class="row-simple row-beer"><span class="name">Fischer<span class="beer-meta">Pilsner – 5%–5.5% vol</span><span class="desc">French pilsner with rich malt flavour and light bitterness. Contains malt and hops.</span></span><span class="price">5,00€</span></div>
+<div class="row-simple row-beer"><span class="name">Dathenes<span class="beer-meta">Lager – 4.5% vol</span><span class="desc">Light, refreshing lager with a mild flavour and gentle bitterness. Contains malt, hops and yeast.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Sol<span class="beer-meta">Lager – 4.5% vol</span><span class="desc">Light, refreshing lager with a mild taste, ideal with lemon. Contains malt and hops.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Peroni<span class="beer-meta">Premium pilsner – 5.6% vol</span><span class="desc">Italian pils with a crisp taste and floral aromas. Contains barley malt and hops.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Clausthaler<span class="beer-meta">Non-alcoholic lager – 0.5% vol</span><span class="desc">Non-alcoholic lager with full flavour and a subtle hop aroma. Contains malt and hops.</span></span><span class="price">5,50€</span></div>
+<div class="row-simple row-beer"><span class="name">Stella Artois<span class="beer-meta">Lager – 5% vol</span><span class="desc">Pale lager with balanced flavour and a clean finish. Contains barley malt and hops.</span></span><span class="price">5,00€</span></div>
+<div class="row-simple row-beer"><span class="name">Fischer<span class="beer-meta">Pilsner – 5% vol</span><span class="desc">French pils with full malt flavour and light bitterness. Contains malt and hops.</span></span><span class="price">5,00€</span></div>
 <div class="row-simple row-beer"><span class="name">Heineken<span class="beer-meta">Lager – 5% vol</span><span class="desc">Refreshing lager with mild bitterness and a distinctive hop aroma. Contains barley malt and hops.</span></span><span class="price">5,00€</span></div>
 </div>
 </section>
@@ -1006,6 +976,13 @@ Petit Cafe — Vini & Aperitivi
 </main>
 
 <script>
+(function(){
+ if(location.protocol!=='file:')return;
+ document.querySelectorAll('[data-local-href]').forEach(function(a){
+  a.href=a.getAttribute('data-local-href');
+ });
+})();
+
 const observer=new IntersectionObserver(entries=>{
  entries.forEach(entry=>{
   if(entry.isIntersecting){
